@@ -2,65 +2,62 @@
 <html lang="en">
 <head>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iNite</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iNite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --apple-blue: #007AFF;
-  --apple-blue-light: rgba(0,122,255,0.08);
-  --apple-blue-mid: rgba(0,122,255,0.18);
-  --bg: #f5f5f7;
+  --blue: #007AFF;
+  --blue-glow: rgba(0,122,255,0.25);
+  --blue-light: rgba(0,122,255,0.08);
+  --bg: #f2f2f7;
   --surface: #ffffff;
-  --surface2: #f0f0f3;
-  --text: #1d1d1f;
+  --surface2: #ebebf0;
+  --text: #1a1a1f;
   --text-muted: #6e6e73;
-  --text-faint: #aeaeb2;
+  --text-faint: #b0b0b8;
   --border: rgba(0,0,0,0.07);
-  --border-focus: rgba(0,122,255,0.5);
-  --shadow-card: 0 2px 12px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-card-hover: 0 6px 24px rgba(0,0,0,0.11), 0 2px 6px rgba(0,0,0,0.06);
-  --shadow-bar: 0 -1px 0 rgba(0,0,0,0.06), 0 -4px 20px rgba(0,0,0,0.04);
-  --nav-bg: rgba(245,245,247,0.82);
-  --bar-bg: rgba(255,255,255,0.88);
-  --icon-fallback-bg: linear-gradient(135deg, #e0e0e5 0%, #ccccce 100%);
-  --icon-fallback-text: #888888;
-  --btn-clear-hover-border: rgba(0,0,0,0.22);
-  --btn-done-hover: #333333;
+  --border-focus: rgba(0,122,255,0.45);
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.13), 0 3px 10px rgba(0,0,0,0.07);
+  --shadow-bar: 0 8px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
+  --nav-bg: rgba(242,242,247,0.85);
+  --bar-bg: rgba(255,255,255,0.92);
   --green: #30d158;
-  --radius: 18px;
-  --radius-sm: 12px;
+  --orb1: rgba(0,122,255,0.18);
+  --orb2: rgba(88,86,214,0.14);
+  --orb3: rgba(48,209,88,0.10);
+  --radius: 20px;
+  --radius-sm: 14px;
   --radius-icon: 14px;
-  --transition: 0.18s cubic-bezier(0.4,0,0.2,1);
+  --t: 0.2s cubic-bezier(0.4,0,0.2,1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --apple-blue: #0A84FF;
-    --apple-blue-light: rgba(10,132,255,0.14);
-    --apple-blue-mid: rgba(10,132,255,0.25);
-    --bg: #000000;
-    --surface: #1c1c1e;
-    --surface2: #2c2c2e;
-    --text: #f5f5f7;
-    --text-muted: #aeaeb2;
-    --text-faint: #636366;
-    --border: rgba(255,255,255,0.09);
-    --border-focus: rgba(10,132,255,0.55);
-    --shadow-card: 0 2px 14px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.3);
-    --shadow-card-hover: 0 6px 28px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
-    --shadow-bar: 0 -1px 0 rgba(255,255,255,0.07), 0 -4px 20px rgba(0,0,0,0.5);
-    --nav-bg: rgba(0,0,0,0.82);
-    --bar-bg: rgba(28,28,30,0.9);
-    --icon-fallback-bg: linear-gradient(135deg, #3a3a3c 0%, #2c2c2e 100%);
-    --icon-fallback-text: #8e8e93;
-    --btn-clear-hover-border: rgba(255,255,255,0.22);
-    --btn-done-hover: #48484a;
-    --green: #30d158;
+    --blue: #0A84FF;
+    --blue-glow: rgba(10,132,255,0.3);
+    --blue-light: rgba(10,132,255,0.12);
+    --bg: #0a0a0f;
+    --surface: #1c1c22;
+    --surface2: #26262e;
+    --text: #f0f0f5;
+    --text-muted: #aeaeb8;
+    --text-faint: #58585f;
+    --border: rgba(255,255,255,0.08);
+    --border-focus: rgba(10,132,255,0.5);
+    --shadow-card: 0 2px 18px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-card-hover: 0 12px 44px rgba(0,0,0,0.7), 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-bar: 0 8px 40px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+    --nav-bg: rgba(10,10,15,0.88);
+    --bar-bg: rgba(20,20,28,0.94);
+    --orb1: rgba(10,132,255,0.22);
+    --orb2: rgba(94,92,230,0.18);
+    --orb3: rgba(48,209,88,0.12);
   }
 }
 
@@ -72,611 +69,595 @@ body {
   color: var(--text);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* ─── NAV ─── */
+/* ── BACKGROUND ── */
+.bg-canvas {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; overflow: hidden;
+}
+
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(90px); will-change: transform;
+}
+
+.orb-1 {
+  width: 650px; height: 650px; background: var(--orb1);
+  top: -220px; left: -160px;
+  animation: orbFloat1 22s ease-in-out infinite;
+}
+.orb-2 {
+  width: 520px; height: 520px; background: var(--orb2);
+  top: 28%; right: -190px;
+  animation: orbFloat2 28s ease-in-out infinite;
+}
+.orb-3 {
+  width: 420px; height: 420px; background: var(--orb3);
+  bottom: 8%; left: 18%;
+  animation: orbFloat3 18s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(70px,90px) scale(1.08); }
+  66% { transform: translate(-45px,45px) scale(0.94); }
+}
+@keyframes orbFloat2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  40% { transform: translate(-85px,65px) scale(1.1); }
+  70% { transform: translate(35px,-55px) scale(0.91); }
+}
+@keyframes orbFloat3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(55px,-75px) scale(1.07); }
+}
+
+.bg-dots {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle, var(--text-faint) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.15;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* ── NAV ── */
 nav {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: 0; z-index: 200;
   background: var(--nav-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
   border-bottom: 1px solid var(--border);
-  height: 52px;
+  height: 56px;
   display: flex; align-items: center;
   padding: 0 2.5rem;
   justify-content: space-between;
+  animation: navDown 0.5s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+@keyframes navDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
 .logo {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.03em;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  color: var(--text); letter-spacing: -0.05em;
   text-decoration: none;
-  display: flex; align-items: center; gap: 2px;
+  display: flex; align-items: center;
 }
 
-.logo i { color: var(--apple-blue); font-style: normal; }
-
-.nav-tag {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-faint);
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 4px 12px;
-  letter-spacing: 0.01em;
+.logo-i {
+  color: var(--blue);
+  display: inline-block;
+  animation: logoPulse 3s ease-in-out infinite;
 }
 
-/* ─── HERO ─── */
+@keyframes logoPulse {
+  0%,100% { text-shadow: none; }
+  50% { text-shadow: 0 0 24px var(--blue-glow); }
+}
+
+.update-status {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.72rem; color: var(--text-faint); font-weight: 400;
+}
+.update-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--text-faint); flex-shrink: 0;
+  transition: background 0.4s;
+}
+.update-dot.syncing { background: var(--blue); animation: blink 1s ease-in-out infinite; }
+.update-dot.done    { background: var(--green); }
+.update-dot.error   { background: #ff453a; }
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── HERO ── */
 .hero {
   text-align: center;
-  padding: 4.5rem 2rem 3rem;
-  max-width: 640px;
-  margin: 0 auto;
+  padding: 5.5rem 2rem 3.5rem;
+  max-width: 720px; margin: 0 auto;
+  position: relative; z-index: 1;
 }
 
 .hero-eyebrow {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--apple-blue);
-  margin-bottom: 1rem;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.74rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue);
+  background: var(--blue-light);
+  border: 1px solid rgba(0,122,255,0.2);
+  border-radius: 100px; padding: 5px 14px;
+  margin-bottom: 1.6rem;
+  animation: fadeUp 0.7s 0.1s both;
+}
+
+.eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--blue); border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
 }
 
 h1 {
-  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
-  color: var(--text);
-  margin-bottom: 1.1rem;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 800; letter-spacing: -0.05em;
+  line-height: 1.0; color: var(--text);
+  margin-bottom: 1.3rem;
+  animation: fadeUp 0.7s 0.2s both;
+}
+
+.h1-shine {
+  background: linear-gradient(135deg, var(--blue) 0%, #5856D6 50%, #34aadc 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
 }
 
 .hero-sub {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  font-weight: 300;
-  line-height: 1.65;
-  max-width: 420px;
-  margin: 0 auto 2.4rem;
+  font-size: 1.1rem; color: var(--text-muted); font-weight: 300;
+  line-height: 1.7; max-width: 460px;
+  margin: 0 auto 2.6rem;
+  animation: fadeUp 0.7s 0.3s both;
 }
 
 .steps {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
+  display: inline-flex; align-items: center; gap: 0;
   background: var(--surface);
-  border-radius: 100px;
-  border: 1px solid var(--border);
+  border-radius: 100px; border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
-  padding: 6px 6px 6px 16px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 400;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding: 7px 7px 7px 18px;
+  font-size: 0.8rem; color: var(--text-muted); font-weight: 400;
+  flex-wrap: wrap; justify-content: center;
+  animation: fadeUp 0.7s 0.4s both;
 }
 
-.steps span {
-  display: flex; align-items: center; gap: 5px;
-}
+.steps span { display: flex; align-items: center; gap: 6px; }
 
 .step-dot {
-  width: 20px; height: 20px;
-  background: var(--apple-blue);
-  border-radius: 50%;
-  color: white;
-  font-size: 0.65rem;
-  font-weight: 700;
+  width: 22px; height: 22px; background: var(--blue);
+  border-radius: 50%; color: white;
+  font-size: 0.65rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 
-.step-divider {
-  color: var(--text-faint);
-  margin: 0 8px;
-  font-size: 0.7rem;
+.step-divider { color: var(--text-faint); margin: 0 10px; font-size: 0.72rem; }
+
+.hero-stats {
+  display: flex; align-items: center; justify-content: center;
+  gap: 2rem; margin-top: 2.4rem;
+  animation: fadeUp 0.7s 0.5s both;
 }
 
-/* ─── CONTAINER ─── */
+.stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.7rem; font-weight: 800;
+  color: var(--text); letter-spacing: -0.04em; line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.67rem; color: var(--text-faint); font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+.stat-divider { width: 1px; height: 36px; background: var(--border); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── CONTAINER ── */
 .container {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 2rem 8rem;
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 2rem 9rem;
+  position: relative; z-index: 1;
 }
 
-/* ─── REQUEST APPS BUTTON ─── */
+/* ── REQUEST BUTTON ── */
 .request-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.1rem;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.6s 0.55s both;
 }
 
-.request-label {
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  font-weight: 400;
-}
+.request-label { font-size: 0.78rem; color: var(--text-faint); font-weight: 400; }
 
 .btn-request {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #7B2FBE;
-  border: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #7B2FBE 0%, #5856D6 100%);
+  border: none; border-radius: 100px; padding: 10px 20px;
+  font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 600;
+  color: #fff; cursor: pointer; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(123,47,190,0.38);
+  transition: all var(--t); letter-spacing: -0.01em; flex-shrink: 0;
+  position: relative; overflow: hidden;
+}
+
+.btn-request::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
   border-radius: 100px;
-  padding: 9px 18px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: #ffffff;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(123,47,190,0.35);
-  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-  letter-spacing: -0.01em;
-  flex-shrink: 0;
 }
 
 .btn-request:hover {
-  background: #6a27a8;
-  box-shadow: 0 6px 22px rgba(123,47,190,0.48);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(123,47,190,0.52);
 }
+.btn-request:active { transform: scale(0.97); }
 
-.btn-request:active {
-  transform: scale(0.96);
-}
-
-.btn-request svg {
-  flex-shrink: 0;
-}
-
-/* ─── SEARCH ─── */
+/* ── SEARCH ── */
 .search-wrap {
-  margin-bottom: 2.5rem;
-  position: relative;
+  margin-bottom: 2.8rem; position: relative;
+  animation: fadeUp 0.6s 0.6s both;
 }
 
 .search-wrap input {
-  width: 100%;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 13px 18px 13px 46px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: var(--text);
-  outline: none;
-  box-shadow: var(--shadow-card);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%; background: var(--surface);
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  padding: 14px 20px 14px 50px;
+  font-family: 'Outfit', sans-serif; font-size: 0.96rem; font-weight: 400;
+  color: var(--text); outline: none; box-shadow: var(--shadow-card);
+  transition: border-color var(--t), box-shadow var(--t), transform var(--t);
 }
 
 .search-wrap input::placeholder { color: var(--text-faint); }
 
 .search-wrap input:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--apple-blue-light), var(--shadow-card);
+  box-shadow: 0 0 0 4px var(--blue-light), var(--shadow-card);
+  transform: translateY(-1px);
 }
 
 .search-icon {
-  position: absolute; left: 16px; top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-faint);
-  pointer-events: none;
+  position: absolute; left: 18px; top: 50%;
+  transform: translateY(-50%); color: var(--text-faint);
+  pointer-events: none; transition: color var(--t);
 }
+.search-wrap:focus-within .search-icon { color: var(--blue); }
 
-/* ─── CATEGORY ─── */
-.cat-section { margin-bottom: 2.8rem; }
+/* ── CATEGORY ── */
+.cat-section {
+  margin-bottom: 3rem;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.cat-section.section-visible { opacity: 1; transform: translateY(0); }
 
+.cat-label-wrap {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;
+}
 .cat-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 0.9rem;
-  padding-left: 2px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-faint); padding-left: 2px;
+  white-space: nowrap;
+}
+.cat-line { flex: 1; height: 1px; background: var(--border); }
+.cat-count {
+  font-size: 0.65rem; font-weight: 600; color: var(--text-faint);
+  background: var(--surface2); border-radius: 100px; padding: 2px 8px;
 }
 
-/* ─── APP GRID ─── */
+/* ── APP GRID ── */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
+  gap: 13px;
 }
 
-/* ─── APP CARD ─── */
+/* ── APP CARD ── */
 .app-card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-  border: 2px solid transparent;
-  padding: 1.1rem 1rem 1rem;
-  cursor: pointer;
-  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition), background var(--transition);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  position: relative;
-  user-select: none;
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow-card); border: 1.5px solid var(--border);
+  padding: 1.2rem 1.1rem 1.1rem; cursor: pointer;
+  transition: box-shadow var(--t), border-color var(--t),
+              transform 0.25s cubic-bezier(0.34,1.4,0.64,1), background var(--t);
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 10px; position: relative; user-select: none; overflow: hidden;
+  opacity: 0; transform: translateY(24px) scale(0.96);
 }
+
+.app-card.card-visible {
+  animation: cardReveal 0.45s cubic-bezier(0.34,1.2,0.64,1) forwards;
+}
+
+@keyframes cardReveal {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* shimmer sweep */
+.app-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,0.1) 50%, transparent 62%);
+  transform: translateX(-120%); transition: transform 0.55s ease;
+  border-radius: var(--radius); pointer-events: none;
+}
+.app-card:hover::before { transform: translateX(120%); }
 
 .app-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px rgba(0,122,255,0.14);
+  border-color: rgba(0,122,255,0.2);
+  transform: translateY(-4px) scale(1.015);
 }
-
-.app-card:active { transform: scale(0.97) translateY(0); }
+.app-card:active { transform: scale(0.97) translateY(0) !important; }
 
 .app-card.selected {
-  border-color: var(--apple-blue);
-  background: var(--apple-blue-light);
-  box-shadow: 0 0 0 0 transparent, var(--shadow-card);
+  border-color: var(--blue);
+  background: linear-gradient(135deg, var(--blue-light), rgba(88,86,214,0.05));
+  box-shadow: 0 0 0 3px var(--blue-glow), var(--shadow-card);
 }
 
-.app-card.no-url {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.app-card.no-url:hover { transform: none; box-shadow: var(--shadow-card); }
+.app-card.no-url { cursor: not-allowed; }
+.app-card.no-url:hover { transform: none !important; box-shadow: var(--shadow-card); border-color: var(--border); }
+.app-card.no-url::before { display: none; }
 
 /* icon */
 .app-icon-wrap {
-  width: 52px; height: 52px;
-  border-radius: var(--radius-icon);
-  overflow: hidden;
-  background: var(--surface2);
-  flex-shrink: 0;
+  width: 54px; height: 54px; border-radius: var(--radius-icon);
+  overflow: hidden; background: var(--surface2); flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34,1.4,0.64,1), box-shadow var(--t);
 }
+.app-card:hover .app-icon-wrap {
+  transform: scale(1.12) rotate(-3deg);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+}
+.app-card.selected .app-icon-wrap { transform: scale(1.06); }
 
 .app-icon-wrap img {
-  width: 100%; height: 100%;
-  object-fit: contain;
-  border-radius: var(--radius-icon);
-  display: block;
+  width: 100%; height: 100%; object-fit: contain;
+  border-radius: var(--radius-icon); display: block;
 }
-
 .app-icon-wrap .icon-fallback {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 26px;
-  background: var(--icon-fallback-bg);
-  color: var(--icon-fallback-text);
-  font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--surface2), var(--border));
+  color: var(--text-faint); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em;
 }
 
-/* text */
-.app-name {
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
+.app-name { font-size: 0.84rem; font-weight: 600; color: var(--text); line-height: 1.25; letter-spacing: -0.01em; }
+.app-desc { font-size: 0.7rem; color: var(--text-faint); line-height: 1.45; font-weight: 400; }
 
-.app-desc {
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  line-height: 1.4;
-  font-weight: 400;
+.version-badge {
+  display: inline-flex; align-items: center;
+  font-size: 0.6rem; font-weight: 600;
+  color: var(--blue); background: var(--blue-light);
+  border-radius: 100px; padding: 2px 8px;
+  letter-spacing: 0.01em; margin-top: -4px;
+}
+.version-badge.loading {
+  color: var(--text-faint); background: var(--surface2);
+  animation: blink 1.4s ease-in-out infinite;
 }
 
 /* check */
 .check {
-  position: absolute;
-  top: 10px; right: 10px;
-  width: 20px; height: 20px;
-  background: var(--apple-blue);
+  position: absolute; top: 11px; right: 11px;
+  width: 22px; height: 22px;
+  background: linear-gradient(135deg, var(--blue), #5856D6);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  opacity: 0;
-  transform: scale(0.3) rotate(-45deg);
-  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  opacity: 0; transform: scale(0.3) rotate(-90deg);
+  transition: opacity 0.22s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 2px 10px var(--blue-glow);
 }
+.app-card.selected .check { opacity: 1; transform: scale(1) rotate(0deg); }
+.check svg { width: 11px; height: 11px; }
 
-.app-card.selected .check {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-.check svg { width: 10px; height: 10px; }
-
-/* no-url badge */
 .no-url-badge {
-  position: absolute;
-  top: 10px; right: 10px;
-  background: var(--surface2);
-  border-radius: 100px;
-  padding: 2px 7px;
-  font-size: 0.6rem;
-  color: var(--text-faint);
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  position: absolute; top: 11px; right: 11px;
+  background: var(--surface2); border-radius: 100px;
+  padding: 3px 8px; font-size: 0.6rem; color: var(--text-faint);
+  font-weight: 600; letter-spacing: 0.04em;
 }
 
-/* ─── STICKY BAR ─── */
+/* ── FLOATING PILL BAR ── */
 .sticky-bar {
   position: fixed;
-  bottom: 0; left: 0; right: 0;
+  bottom: 22px; left: 50%;
+  transform: translateX(-50%) translateY(130px);
   background: var(--bar-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: var(--shadow-bar);
-  border-top: 1px solid var(--border);
-  padding: 0.9rem 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  box-shadow: var(--shadow-bar), 0 0 0 1px var(--border);
+  border-radius: 100px;
+  padding: 8px 8px 8px 20px;
+  display: flex; align-items: center; gap: 12px;
   z-index: 300;
-  transform: translateY(110%);
-  transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1);
+  transition: transform 0.45s cubic-bezier(0.34,1.2,0.64,1), opacity 0.3s;
+  opacity: 0; width: max-content; max-width: calc(100vw - 3rem);
 }
+.sticky-bar.visible { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-.sticky-bar.visible { transform: translateY(0); }
-
-.bar-left {
-  display: flex; align-items: center; gap: 14px;
-  min-width: 0;
-}
+.bar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
 
 .sel-bubble {
-  background: var(--apple-blue);
-  color: white;
-  border-radius: 100px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 4px 11px;
-  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue), #5856D6);
+  color: white; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 700;
+  padding: 4px 12px; flex-shrink: 0;
+  box-shadow: 0 2px 10px var(--blue-glow);
+  min-width: 30px; text-align: center;
 }
 
 .sel-info { min-width: 0; }
-
-.sel-title {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
+.sel-title { font-size: 0.88rem; font-weight: 600; color: var(--text); white-space: nowrap; }
 .sel-list {
-  font-size: 0.72rem;
-  color: var(--text-faint);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 380px;
-  margin-top: 1px;
+  font-size: 0.7rem; color: var(--text-faint);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 240px; margin-top: 1px;
 }
 
-.bar-right {
-  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
-}
+.bar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
 .btn-clear {
-  background: transparent;
-  border: 1.5px solid var(--border);
-  border-radius: 100px;
-  padding: 9px 18px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all var(--transition);
+  background: var(--surface2); border: none; border-radius: 100px;
+  padding: 9px 16px; font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem; font-weight: 500; color: var(--text-muted);
+  cursor: pointer; transition: all var(--t);
 }
-.btn-clear:hover { color: var(--text); border-color: var(--btn-clear-hover-border); }
+.btn-clear:hover { color: var(--text); background: var(--border); }
 
 .btn-inite {
-  background: var(--apple-blue);
-  border: none;
-  border-radius: 100px;
-  padding: 10px 22px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
+  background: linear-gradient(135deg, var(--blue) 0%, #5856D6 100%);
+  border: none; border-radius: 100px; padding: 10px 22px;
+  font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 600;
+  color: white; cursor: pointer;
   display: flex; align-items: center; gap: 7px;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-  box-shadow: 0 4px 14px rgba(0,122,255,0.35);
-  letter-spacing: -0.01em;
+  transition: all var(--t);
+  box-shadow: 0 4px 18px var(--blue-glow);
+  letter-spacing: -0.01em; position: relative; overflow: hidden;
 }
-.btn-inite:hover { background: #0066dd; box-shadow: 0 6px 20px rgba(0,122,255,0.45); }
+.btn-inite::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+  border-radius: 100px;
+}
+.btn-inite:hover { transform: scale(1.04); box-shadow: 0 6px 24px var(--blue-glow); }
 .btn-inite:active { transform: scale(0.96); }
 
-/* ─── DOWNLOAD STATUS OVERLAY ─── */
+/* ── DOWNLOAD OVERLAY ── */
 .dl-overlay {
   position: fixed; inset: 0; z-index: 999;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.42); backdrop-filter: blur(16px);
   display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.25s;
+  opacity: 0; pointer-events: none; transition: opacity 0.28s;
 }
-
 .dl-overlay.open { opacity: 1; pointer-events: all; }
 
 .dl-sheet {
-  background: var(--surface);
-  border-radius: 24px;
-  padding: 2.2rem 2rem;
-  width: 100%; max-width: 440px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
-  transform: translateY(24px) scale(0.97);
-  transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1);
+  background: var(--surface); border-radius: 28px;
+  padding: 2.4rem 2.2rem; width: 100%; max-width: 460px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.25), 0 0 0 1px var(--border);
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1);
 }
-
 .dl-overlay.open .dl-sheet { transform: translateY(0) scale(1); }
 
-.dl-header {
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 1.6rem;
-}
+.dl-header { display: flex; align-items: center; gap: 14px; margin-bottom: 1.8rem; }
 
 .dl-icon-wrap {
-  width: 46px; height: 46px;
-  background: var(--apple-blue-light);
-  border-radius: 13px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+  width: 48px; height: 48px; background: var(--blue-light);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--blue-glow);
+  animation: blink 2s ease-in-out infinite;
 }
 
 .dl-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700;
+  letter-spacing: -0.03em; color: var(--text);
 }
-
-.dl-sub {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
+.dl-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
 
 .dl-app-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 1.8rem;
-  max-height: 240px;
-  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 1.8rem; max-height: 240px; overflow-y: auto;
 }
 
 .dl-app-row {
   display: flex; align-items: center; gap: 12px;
-  padding: 10px 12px;
-  background: var(--surface2);
-  border-radius: var(--radius-sm);
-  border: 1.5px solid transparent;
-  transition: border-color 0.2s;
+  padding: 11px 13px; background: var(--surface2);
+  border-radius: var(--radius-sm); border: 1.5px solid transparent;
+  transition: border-color 0.3s, transform 0.2s;
 }
-
-.dl-app-row.downloading { border-color: var(--apple-blue); }
+.dl-app-row.downloading { border-color: var(--blue); transform: scale(1.01); }
 .dl-app-row.done { border-color: var(--green); }
-.dl-app-row.skipped { opacity: 0.5; }
+.dl-app-row.skipped { opacity: 0.4; }
 
 .dl-app-icon {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: var(--bg);
+  width: 34px; height: 34px; border-radius: 9px; overflow: hidden;
+  flex-shrink: 0; background: var(--bg);
   display: flex; align-items: center; justify-content: center;
 }
-
-.dl-app-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
-.dl-app-icon .fallback-letter {
-  font-size: 0.8rem; font-weight: 700;
-  color: var(--text-muted);
-}
-
-.dl-app-name {
-  flex: 1;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.dl-app-status {
-  font-size: 0.72rem;
-  color: var(--text-faint);
-  font-weight: 400;
-}
-
-.dl-app-row.downloading .dl-app-status { color: var(--apple-blue); font-weight: 500; }
-.dl-app-row.done .dl-app-status { color: var(--green); font-weight: 500; }
+.dl-app-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 9px; }
+.dl-app-icon .fallback-letter { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+.dl-app-name { flex: 1; font-size: 0.86rem; font-weight: 500; color: var(--text); }
+.dl-app-status { font-size: 0.72rem; color: var(--text-faint); font-weight: 400; }
+.dl-app-row.downloading .dl-app-status { color: var(--blue); font-weight: 600; }
+.dl-app-row.done .dl-app-status { color: var(--green); font-weight: 600; }
 
 .dl-notice {
-  font-size: 0.77rem;
-  color: var(--text-muted);
-  line-height: 1.55;
-  background: var(--surface2);
-  border-radius: var(--radius-sm);
-  padding: 11px 14px;
-  margin-bottom: 1.2rem;
+  font-size: 0.77rem; color: var(--text-muted); line-height: 1.6;
+  background: var(--surface2); border-radius: var(--radius-sm);
+  padding: 12px 15px; margin-bottom: 1.2rem;
+  border-left: 3px solid var(--blue);
 }
 
 .btn-done {
   width: 100%;
-  background: var(--text);
-  border: none;
-  border-radius: 100px;
-  padding: 13px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-  transition: background var(--transition);
+  background: linear-gradient(135deg, var(--blue), #5856D6);
+  border: none; border-radius: 100px; padding: 14px;
+  font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 600;
+  color: white; cursor: pointer;
+  transition: all var(--t);
+  box-shadow: 0 4px 16px var(--blue-glow);
 }
-.btn-done:hover { background: var(--btn-done-hover); }
+.btn-done:hover { transform: translateY(-1px); box-shadow: 0 6px 22px var(--blue-glow); }
 
-/* ─── VERSION BADGE ─── */
-.version-badge {
-  display: inline-flex; align-items: center;
-  font-size: 0.62rem; font-weight: 500;
-  color: var(--apple-blue);
-  background: var(--apple-blue-light);
-  border-radius: 100px;
-  padding: 2px 7px;
-  letter-spacing: 0.01em;
-  margin-top: -4px;
-}
-.version-badge.loading {
-  color: var(--text-faint);
-  background: var(--surface2);
-  animation: vpulse 1.4s ease-in-out infinite;
-}
-@keyframes vpulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
-
-.update-status {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 0.72rem; color: var(--text-faint); font-weight: 400;
-}
-.update-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--text-faint); flex-shrink: 0;
-  transition: background 0.4s;
-}
-.update-dot.syncing { background: var(--apple-blue); animation: vpulse 1s ease-in-out infinite; }
-.update-dot.done    { background: var(--green); animation: none; }
-.update-dot.error   { background: #ff453a; animation: none; }
-
-/* ─── EMPTY STATE ─── */
 .empty-state {
-  text-align: center;
-  padding: 4rem 2rem;
-  color: var(--text-faint);
-  font-size: 0.9rem;
+  text-align: center; padding: 5rem 2rem;
+  color: var(--text-faint); font-size: 0.9rem;
 }
 
 @media (max-width: 600px) {
   nav { padding: 0 1.2rem; }
-  .container { padding: 0 1.2rem 8rem; }
-  .sticky-bar { padding: 0.9rem 1.2rem; flex-wrap: wrap; }
+  .container { padding: 0 1.2rem 9rem; }
+  .sticky-bar { bottom: 14px; padding: 8px 8px 8px 16px; }
   .sel-list { display: none; }
-  .btn-inite, .btn-clear { font-size: 0.82rem; padding: 9px 16px; }
-  h1 { font-size: 2.2rem; }
-  .steps { font-size: 0.75rem; }
+  h1 { font-size: 2.8rem; }
   .request-label { display: none; }
+  .hero-stats { gap: 1.2rem; }
+  .stat-num { font-size: 1.3rem; }
 }
 </style>
 </head>
 <body>
 
+<div class="bg-canvas">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="bg-dots"></div>
+
 <nav>
-  <a class="logo" href="#"><i>i</i>Nite</a>
+  <a class="logo" href="#"><span class="logo-i">i</span>Nite</a>
   <div class="update-status" id="update-status">
     <div class="update-dot syncing" id="update-dot"></div>
     <span id="update-label">Checking for updates…</span>
@@ -684,30 +665,45 @@ h1 {
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow">For Mac</div>
-  <h1>All your apps.<br>One click.</h1>
-  <p class="hero-sub">Pick every app you need, hit the button — iNite downloads them all directly from their official sources. No scripts. No nonsense.</p>
+  <div class="hero-eyebrow">
+    <div class="eyebrow-dot"></div>
+    For Mac · Free · Open Source
+  </div>
+  <h1>All your apps.<br><span class="h1-shine">One click.</span></h1>
+  <p class="hero-sub">Pick every app you need, hit the button — iNite downloads them all directly from official sources. No scripts. No nonsense. Just apps.</p>
   <div class="steps">
     <span><div class="step-dot">1</div> Pick your apps</span>
     <div class="step-divider">›</div>
     <span><div class="step-dot">2</div> Tap iNite</span>
     <div class="step-divider">›</div>
     <span><div class="step-dot">3</div> Open each DMG</span>
-    <div class="step-divider" style="margin-right:10px">›</div>
-    <span style="color:var(--apple-blue);font-weight:500">Done ✓</span>
+    <div class="step-divider" style="margin-right:12px">›</div>
+    <span style="color:var(--blue);font-weight:600">Done ✓</span>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num" id="stat-apps">0</div>
+      <div class="stat-label">Apps</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num" id="stat-cats">0</div>
+      <div class="stat-label">Categories</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">Always</div>
+    </div>
   </div>
 </section>
 
 <div class="container">
-
-  <!-- ── Request Apps button ── -->
   <div class="request-wrap">
     <span class="request-label">Don't see what you need?</span>
     <a id="btn-request" class="btn-request" href="#" target="_blank" rel="noopener noreferrer">
-      <!-- Google Forms icon -->
-      <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="10" y="2" width="28" height="44" rx="3" fill="white" fill-opacity="0.25"/>
-        <path d="M10 5a3 3 0 0 1 3-3h18l7 7v34a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V5z" fill="white" fill-opacity="0.18"/>
+      <svg width="15" height="15" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 5a3 3 0 0 1 3-3h18l7 7v34a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V5z" fill="white" fill-opacity="0.2"/>
         <path d="M31 2l7 7h-7V2z" fill="white" fill-opacity="0.5"/>
         <rect x="16" y="20" width="16" height="2" rx="1" fill="white"/>
         <rect x="16" y="26" width="16" height="2" rx="1" fill="white"/>
@@ -719,16 +715,15 @@ h1 {
   </div>
 
   <div class="search-wrap">
-    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
     </svg>
-    <input id="search" type="text" placeholder="Search apps…" autocomplete="off" spellcheck="false">
+    <input id="search" type="text" placeholder="Search apps, categories…" autocomplete="off" spellcheck="false">
   </div>
 
   <div id="sections"></div>
 </div>
 
-<!-- Sticky bar -->
 <div class="sticky-bar" id="sticky-bar">
   <div class="bar-left">
     <div class="sel-bubble" id="sel-count">0</div>
@@ -745,17 +740,16 @@ h1 {
         <polyline points="7 10 12 15 17 10"/>
         <line x1="12" y1="15" x2="12" y2="3"/>
       </svg>
-      iNite
+      iNite it
     </button>
   </div>
 </div>
 
-<!-- Download overlay -->
 <div class="dl-overlay" id="dl-overlay">
   <div class="dl-sheet">
     <div class="dl-header">
       <div class="dl-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
           <line x1="12" y1="15" x2="12" y2="3"/>
@@ -766,151 +760,133 @@ h1 {
         <div class="dl-sub" id="dl-sub">Check your Downloads folder</div>
       </div>
     </div>
-
     <div class="dl-app-list" id="dl-list"></div>
-
     <div class="dl-notice">
-      Your browser will download each DMG file. Once finished, open each one from your Downloads folder and drag the app into <strong>Applications</strong>.
+      Your browser will download each DMG. Once finished, open each one from your Downloads folder and drag the app into <strong>Applications</strong>.
     </div>
-
     <button class="btn-done" id="btn-done">Done</button>
   </div>
 </div>
 
 <script>
-// ─────────────────────────────────────────────────────────────────────────────
-//  GOOGLE FORM LINK
-//  Paste your Google Form share URL here and the Request Apps button will
-//  open it automatically. Example:
-//  const FORM_URL = 'hhttps://docs.google.com/forms/d/e/1FAIpQLSfXGZ9lDxfaJ0Ev2CO654zO7ZoMPlr8y3__JUBjcuhcZlJBrg/viewform?usp=publish-editor';
-// ─────────────────────────────────────────────────────────────────────────────
+// ─── FORM LINK ─────────────────────────────────────────────────────────────
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfXGZ9lDxfaJ0Ev2CO654zO7ZoMPlr8y3__JUBjcuhcZlJBrg/viewform?usp=publish-editor';
-
-// Wire up the button
-(function () {
+(function(){
   const btn = document.getElementById('btn-request');
-  if (FORM_URL) {
-    btn.href = FORM_URL;
-  } else {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      alert('Set your Google Form link by editing the FORM_URL constant near the top of the <script> block.');
-    });
-  }
+  if (FORM_URL) btn.href = FORM_URL;
+  else btn.addEventListener('click', e => { e.preventDefault(); alert('Set FORM_URL in the script.'); });
 })();
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  APP DATA
-//  icon: path to PNG relative to this HTML file, e.g. "Discord/discord.png"
-//  url:  direct DMG download URL — leave '' if not yet added (app will be greyed out)
-// ─────────────────────────────────────────────────────────────────────────────
+// ─── APP DATA ─────────────────────────────────────────────────────────────
 const APPS = [
-
-  // ── Web Browsers ──
-  { id:'chrome',      name:'Chrome',         icon:'browsers/chrome.png',           brew:'google-chrome',      url:'', category:'Web Browsers',     desc:'Fast browser by Google' },
-  { id:'firefox',     name:'Firefox',        icon:'browsers/firefox.png',         brew:'firefox',            url:'', category:'Web Browsers',     desc:'Open source by Mozilla' },
-  { id:'brave',       name:'Brave',          icon:'browsers/brave.png',             brew:'brave-browser',      url:'', category:'Web Browsers',     desc:'Privacy-first browser' },
-  { id:'edge',        name:'Edge',           icon:'browsers/edge.png',               brew:'microsoft-edge',     url:'', category:'Web Browsers',     desc:"Microsoft's browser" },
-  { id:'opera',       name:'Opera',          icon:'browsers/opera.png',             brew:'opera',              url:'', category:'Web Browsers',     desc:'Built-in VPN & more' },
-
-  // ── Communication ──
-  { id:'discord',     name:'Discord',        icon:'communication/discord.png',         brew:'discord',            url:'', category:'Communication',    desc:'Voice, video & text chat' },
-  { id:'slack',       name:'Slack',          icon:'communication/slack.png',             brew:'slack',              url:'', category:'Communication',    desc:'Team messaging platform' },
-  { id:'zoom',        name:'Zoom',           icon:'communication/zoom.png',               brew:'zoom',               url:'', category:'Communication',    desc:'Video conferencing' },
-  { id:'teams',       name:'Teams',          icon:'communication/teams.png',             brew:'microsoft-teams',    url:'', category:'Communication',    desc:"Microsoft's work hub" },
-  { id:'telegram',    name:'Telegram',       icon:'communication/telegram.png',       brew:'telegram',           url:'', category:'Communication',    desc:'Fast & secure messaging' },
-  { id:'whatsapp',    name:'WhatsApp',       icon:'communication/whatsapp.png',       brew:'whatsapp',           url:'', category:'Communication',    desc:'Cross-platform messaging' },
-
-  // ── Developer Tools ──
-  { id:'vscode',      name:'VS Code',        icon:'developer/vscode.png',           brew:'visual-studio-code', url:'', category:'Developer Tools',  desc:'Code editor by Microsoft' },
-  { id:'iterm2',      name:'iTerm2',         icon:'developer/iterm2.png',           brew:'iterm2',             url:'', category:'Developer Tools',  desc:'Better macOS terminal' },
-  { id:'github',      name:'GitHub Desktop', icon:'developer/github.png',           brew:'github',             url:'', category:'Developer Tools',  desc:'GitHub GUI client' },
-  { id:'postman',     name:'Postman',        icon:'developer/postman.png',         brew:'postman',            url:'', category:'Developer Tools',  desc:'API development & testing' },
-  { id:'sublime',     name:'Sublime Text',   icon:'developer/sublime.png',         brew:'sublime-text',       url:'', category:'Developer Tools',  desc:'Sophisticated text editor' },
-
-  // ── Media ──
-  { id:'vlc',         name:'VLC',            icon:'media/vlc.png',                 brew:'vlc',                url:'', category:'Media',            desc:'Universal media player' },
+  { id:'chrome',      name:'Chrome',         icon:'browsers/chrome.png',       brew:'google-chrome',      url:'', category:'Web Browsers',     desc:'Fast browser by Google' },
+  { id:'firefox',     name:'Firefox',        icon:'browsers/firefox.png',      brew:'firefox',            url:'', category:'Web Browsers',     desc:'Open source by Mozilla' },
+  { id:'brave',       name:'Brave',          icon:'browsers/brave.png',        brew:'brave-browser',      url:'', category:'Web Browsers',     desc:'Privacy-first browser' },
+  { id:'edge',        name:'Edge',           icon:'browsers/edge.png',         brew:'microsoft-edge',     url:'', category:'Web Browsers',     desc:"Microsoft's browser" },
+  { id:'opera',       name:'Opera',          icon:'browsers/opera.png',        brew:'opera',              url:'', category:'Web Browsers',     desc:'Built-in VPN & more' },
+  { id:'discord',     name:'Discord',        icon:'communication/discord.png', brew:'discord',            url:'', category:'Communication',    desc:'Voice, video & text chat' },
+  { id:'slack',       name:'Slack',          icon:'communication/slack.png',   brew:'slack',              url:'', category:'Communication',    desc:'Team messaging platform' },
+  { id:'zoom',        name:'Zoom',           icon:'communication/zoom.png',    brew:'zoom',               url:'', category:'Communication',    desc:'Video conferencing' },
+  { id:'teams',       name:'Teams',          icon:'communication/teams.png',   brew:'microsoft-teams',    url:'', category:'Communication',    desc:"Microsoft's work hub" },
+  { id:'telegram',    name:'Telegram',       icon:'communication/telegram.png',brew:'telegram',           url:'', category:'Communication',    desc:'Fast & secure messaging' },
+  { id:'whatsapp',    name:'WhatsApp',       icon:'communication/whatsapp.png',brew:'whatsapp',           url:'', category:'Communication',    desc:'Cross-platform messaging' },
+  { id:'vscode',      name:'VS Code',        icon:'developer/vscode.png',      brew:'visual-studio-code', url:'', category:'Developer Tools',  desc:'Code editor by Microsoft' },
+  { id:'iterm2',      name:'iTerm2',         icon:'developer/iterm2.png',      brew:'iterm2',             url:'', category:'Developer Tools',  desc:'Better macOS terminal' },
+  { id:'github',      name:'GitHub Desktop', icon:'developer/github.png',      brew:'github',             url:'', category:'Developer Tools',  desc:'GitHub GUI client' },
+  { id:'postman',     name:'Postman',        icon:'developer/postman.png',     brew:'postman',            url:'', category:'Developer Tools',  desc:'API development & testing' },
+  { id:'sublime',     name:'Sublime Text',   icon:'developer/sublime.png',     brew:'sublime-text',       url:'', category:'Developer Tools',  desc:'Sophisticated text editor' },
+  { id:'vlc',         name:'VLC',            icon:'media/vlc.png',             brew:'vlc',                url:'', category:'Media',            desc:'Universal media player' },
   { id:'spotify',     name:'Spotify',        icon:'media/spotify.png',         brew:'spotify',            url:'', category:'Media',            desc:'Music & podcast streaming' },
-  { id:'iina',        name:'IINA',           icon:'media/iina.png',               brew:'iina',               url:'', category:'Media',            desc:'Modern video player for Mac' },
-  { id:'handbrake',   name:'HandBrake',      icon:'media/handbrake.png',     brew:'handbrake',          url:'', category:'Media',            desc:'Open source video transcoder' },
-  { id:'audacity',    name:'Audacity',       icon:'media/audacity.png',       brew:'audacity',           url:'', category:'Media',            desc:'Audio editor & recorder' },
-
-  // ── Productivity ──
-  { id:'notion',      name:'Notion',         icon:'productivity/notion.png',           brew:'notion',             url:'', category:'Productivity',     desc:'All-in-one workspace' },
-  { id:'obsidian',    name:'Obsidian',       icon:'productivity/obsidian.png',       brew:'obsidian',           url:'', category:'Productivity',     desc:'Knowledge base & notes' },
-  { id:'1password',   name:'1Password',      icon:'productivity/1password.png',     brew:'1password',          url:'', category:'Productivity',     desc:'Password manager' },
-  { id:'raycast',     name:'Raycast',        icon:'productivity/raycast.png',         brew:'raycast',            url:'', category:'Productivity',     desc:'Supercharged launcher' },
-  { id:'alfred',      name:'Alfred',         icon:'productivity/alfred.png',           brew:'alfred',             url:'', category:'Productivity',     desc:'Productivity app launcher' },
-
-  // ── Utilities ──
-  { id:'rectangle',   name:'Rectangle',      icon:'utilities/rectangle.png',     brew:'rectangle',          url:'', category:'Utilities',        desc:'Window snapping & tiling' },
-  { id:'appcleaner',  name:'AppCleaner',     icon:'utilities/appcleaner.png',   brew:'appcleaner',         url:'', category:'Utilities',        desc:'Thorough app uninstaller' },
-  { id:'anydesk',     name:'AnyDesk',        icon:'utilities/anydesk.png',         brew:'anydesk',            url:'', category:'Utilities',        desc:'Remote desktop access' },
-  { id:'unarchiver',  name:'The Unarchiver', icon:'utilities/unarchiver.png',   brew:'the-unarchiver',     url:'', category:'Utilities',        desc:'Extract any archive format' },
-  { id:'stats',       name:'Stats',          icon:'utilities/stats.png',             brew:'stats',              url:'', category:'Utilities',        desc:'macOS system monitor' },
-
-  // ── Security ──
-  { id:'malwarebytes',name:'Malwarebytes',   icon:'security/malwarebytes.png',brew:'malwarebytes',      url:'', category:'Security',         desc:'Anti-malware scanner' },
-  { id:'bitwarden',   name:'Bitwarden',      icon:'security/bitwarden.png',     brew:'bitwarden',          url:'', category:'Security',         desc:'Open source password vault' },
-
-  // ── Imaging & Design ──
-  { id:'gimp',        name:'GIMP',           icon:'design/gimp.png',               brew:'gimp',               url:'', category:'Imaging & Design', desc:'Free image editor' },
+  { id:'iina',        name:'IINA',           icon:'media/iina.png',            brew:'iina',               url:'', category:'Media',            desc:'Modern video player for Mac' },
+  { id:'handbrake',   name:'HandBrake',      icon:'media/handbrake.png',       brew:'handbrake',          url:'', category:'Media',            desc:'Open source video transcoder' },
+  { id:'audacity',    name:'Audacity',       icon:'media/audacity.png',        brew:'audacity',           url:'', category:'Media',            desc:'Audio editor & recorder' },
+  { id:'notion',      name:'Notion',         icon:'productivity/notion.png',   brew:'notion',             url:'', category:'Productivity',     desc:'All-in-one workspace' },
+  { id:'obsidian',    name:'Obsidian',       icon:'productivity/obsidian.png', brew:'obsidian',           url:'', category:'Productivity',     desc:'Knowledge base & notes' },
+  { id:'1password',   name:'1Password',      icon:'productivity/1password.png',brew:'1password',          url:'', category:'Productivity',     desc:'Password manager' },
+  { id:'raycast',     name:'Raycast',        icon:'productivity/raycast.png',  brew:'raycast',            url:'', category:'Productivity',     desc:'Supercharged launcher' },
+  { id:'alfred',      name:'Alfred',         icon:'productivity/alfred.png',   brew:'alfred',             url:'', category:'Productivity',     desc:'Productivity app launcher' },
+  { id:'rectangle',   name:'Rectangle',      icon:'utilities/rectangle.png',   brew:'rectangle',          url:'', category:'Utilities',        desc:'Window snapping & tiling' },
+  { id:'appcleaner',  name:'AppCleaner',     icon:'utilities/appcleaner.png',  brew:'appcleaner',         url:'', category:'Utilities',        desc:'Thorough app uninstaller' },
+  { id:'anydesk',     name:'AnyDesk',        icon:'utilities/anydesk.png',     brew:'anydesk',            url:'', category:'Utilities',        desc:'Remote desktop access' },
+  { id:'unarchiver',  name:'The Unarchiver', icon:'utilities/unarchiver.png',  brew:'the-unarchiver',     url:'', category:'Utilities',        desc:'Extract any archive format' },
+  { id:'stats',       name:'Stats',          icon:'utilities/stats.png',       brew:'stats',              url:'', category:'Utilities',        desc:'macOS system monitor' },
+  { id:'malwarebytes',name:'Malwarebytes',   icon:'security/malwarebytes.png', brew:'malwarebytes',       url:'', category:'Security',         desc:'Anti-malware scanner' },
+  { id:'bitwarden',   name:'Bitwarden',      icon:'security/bitwarden.png',    brew:'bitwarden',          url:'', category:'Security',         desc:'Open source password vault' },
+  { id:'gimp',        name:'GIMP',           icon:'design/gimp.png',           brew:'gimp',               url:'', category:'Imaging & Design', desc:'Free image editor' },
   { id:'inkscape',    name:'Inkscape',       icon:'design/inkscape.png',       brew:'inkscape',           url:'', category:'Imaging & Design', desc:'Vector graphics editor' },
-  { id:'blender',     name:'Blender',        icon:'design/blender.png',         brew:'blender',            url:'', category:'Imaging & Design', desc:'3D creation suite' },
-  { id:'krita',       name:'Krita',          icon:'design/krita.png',             brew:'krita',              url:'', category:'Imaging & Design', desc:'Professional digital painting' },
-  { id:'affinity',    name:'Affinity',       icon:'design/affinity.png',             brew:'affinity',              url:'', category:'Imaging & Design', desc:'Image editing and design software' },
-
-  // ── Online Storage ──
-  { id:'dropbox',     name:'Dropbox',        icon:'storage/dropbox.png',         brew:'dropbox',            url:'', category:'Online Storage',   desc:'Cloud file storage & sync' },
-  { id:'googledrive', name:'Google Drive',   icon:'storage/googledrive.png', brew:'google-drive',       url:'', category:'Online Storage',   desc:"Google's cloud storage" },
-
-  // ── Compression ──
-  { id:'keka',        name:'Keka',           icon:'compression/keka.png',               brew:'keka',               url:'', category:'Compression',      desc:'macOS file archiver' },
+  { id:'blender',     name:'Blender',        icon:'design/blender.png',        brew:'blender',            url:'', category:'Imaging & Design', desc:'3D creation suite' },
+  { id:'krita',       name:'Krita',          icon:'design/krita.png',          brew:'krita',              url:'', category:'Imaging & Design', desc:'Professional digital painting' },
+  { id:'affinity',    name:'Affinity',       icon:'design/affinity.png',       brew:'affinity',           url:'', category:'Imaging & Design', desc:'Image editing and design' },
+  { id:'dropbox',     name:'Dropbox',        icon:'storage/dropbox.png',       brew:'dropbox',            url:'', category:'Online Storage',   desc:'Cloud file storage & sync' },
+  { id:'googledrive', name:'Google Drive',   icon:'storage/googledrive.png',   brew:'google-drive',       url:'', category:'Online Storage',   desc:"Google's cloud storage" },
+  { id:'keka',        name:'Keka',           icon:'compression/keka.png',      brew:'keka',               url:'', category:'Compression',      desc:'macOS file archiver' },
+  { id:'minecraft',   name:'Minecraft',      icon:'games/minecraft.png',       brew:'minecraft',          url:'', category:'Games',            desc:'3D sandbox game' },
+  { id:'roblox',      name:'Roblox',         icon:'games/roblox.png',          brew:'roblox',             url:'', category:'Games',            desc:'Online game platform' },
+  { id:'steam',       name:'Steam',          icon:'games/steam.png',           brew:'steam',              url:'', category:'Games',            desc:'Game launcher' },
+  { id:'epicgames',   name:'Epic Games',     icon:'games/epicgames.png',       brew:'epic-games',         url:'', category:'Games',            desc:'Store with wide collection' },
 ];
-// ─────────────────────────────────────────────────────────────────────────────
 
+// ─── ANIMATED STATS ───────────────────────────────────────────────────────
+function animateCount(el, target, duration) {
+  const start = performance.now();
+  const tick = now => {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+setTimeout(() => {
+  animateCount(document.getElementById('stat-apps'), APPS.length, 900);
+  animateCount(document.getElementById('stat-cats'), new Set(APPS.map(a => a.category)).size, 700);
+}, 650);
+
+// ─── STATE ────────────────────────────────────────────────────────────────
 const selected = new Set();
 
-function makeIconEl(app, size = 52, radius = 14) {
+function makeIconEl(app) {
   const wrap = document.createElement('div');
   wrap.className = 'app-icon-wrap';
-  wrap.style.width = size + 'px';
-  wrap.style.height = size + 'px';
-  wrap.style.borderRadius = radius + 'px';
-
   if (app.icon) {
     const img = document.createElement('img');
-    img.src = app.icon;
-    img.alt = app.name;
-    img.loading = 'lazy';
+    img.src = app.icon; img.alt = app.name; img.loading = 'lazy';
     img.onerror = () => {
       wrap.innerHTML = '';
       const fb = document.createElement('div');
       fb.className = 'icon-fallback';
-      fb.textContent = app.name.slice(0, 2).toUpperCase();
+      fb.textContent = app.name.slice(0,2).toUpperCase();
       wrap.appendChild(fb);
     };
     wrap.appendChild(img);
   } else {
     const fb = document.createElement('div');
     fb.className = 'icon-fallback';
-    fb.textContent = app.name.slice(0, 2).toUpperCase();
+    fb.textContent = app.name.slice(0,2).toUpperCase();
     wrap.appendChild(fb);
   }
   return wrap;
 }
 
+// ─── SCROLL REVEAL ────────────────────────────────────────────────────────
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('section-visible');
+    entry.target.querySelectorAll('.app-card').forEach((card, i) => {
+      setTimeout(() => card.classList.add('card-visible'), i * 45);
+    });
+    sectionObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
+
+// ─── BUILD ────────────────────────────────────────────────────────────────
 function buildSections(apps) {
   const el = document.getElementById('sections');
   el.innerHTML = '';
-
   const byCategory = {};
-  apps.forEach(a => {
-    if (!byCategory[a.category]) byCategory[a.category] = [];
-    byCategory[a.category].push(a);
-  });
+  apps.forEach(a => { (byCategory[a.category] = byCategory[a.category] || []).push(a); });
 
-  if (Object.keys(byCategory).length === 0) {
+  if (!Object.keys(byCategory).length) {
     el.innerHTML = '<div class="empty-state">No apps match your search.</div>';
     return;
   }
@@ -919,291 +895,167 @@ function buildSections(apps) {
     const sec = document.createElement('div');
     sec.className = 'cat-section';
 
-    const lbl = document.createElement('div');
-    lbl.className = 'cat-label';
-    lbl.textContent = cat;
-    sec.appendChild(lbl);
+    const lw = document.createElement('div'); lw.className = 'cat-label-wrap';
+    const lb = document.createElement('div'); lb.className = 'cat-label'; lb.textContent = cat;
+    const line = document.createElement('div'); line.className = 'cat-line';
+    const cnt = document.createElement('div'); cnt.className = 'cat-count'; cnt.textContent = catApps.length;
+    lw.append(lb, line, cnt);
+    sec.appendChild(lw);
 
-    const grid = document.createElement('div');
-    grid.className = 'app-grid';
+    const grid = document.createElement('div'); grid.className = 'app-grid';
 
     catApps.forEach(app => {
       const card = document.createElement('div');
       card.className = 'app-card' + (selected.has(app.id) ? ' selected' : '') + (!app.url ? ' no-url' : '');
       card.dataset.id = app.id;
-
       card.appendChild(makeIconEl(app));
 
-      const name = document.createElement('div');
-      name.className = 'app-name';
-      name.textContent = app.name;
-
-      const vbadge = document.createElement('div');
-      vbadge.className = 'version-badge loading';
-      vbadge.id = 'vbadge-' + app.id;
-      vbadge.textContent = '···';
-
-      const desc = document.createElement('div');
-      desc.className = 'app-desc';
-      desc.textContent = app.desc;
-
-      const check = document.createElement('div');
-      check.className = 'check';
+      const name = document.createElement('div'); name.className = 'app-name'; name.textContent = app.name;
+      const vb = document.createElement('div'); vb.className = 'version-badge loading'; vb.id = 'vbadge-' + app.id; vb.textContent = '···';
+      const desc = document.createElement('div'); desc.className = 'app-desc'; desc.textContent = app.desc;
+      const check = document.createElement('div'); check.className = 'check';
       check.innerHTML = `<svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>`;
 
-      card.appendChild(name);
-      card.appendChild(vbadge);
-      card.appendChild(desc);
-      card.appendChild(check);
+      card.append(name, vb, desc, check);
 
       if (!app.url) {
-        const badge = document.createElement('div');
-        badge.className = 'no-url-badge';
-        badge.textContent = 'Soon';
+        const badge = document.createElement('div'); badge.className = 'no-url-badge'; badge.textContent = 'Soon';
         card.appendChild(badge);
-      }
-
-      if (app.url) {
+        card.addEventListener('animationend', () => { card.style.opacity = '0.42'; }, { once: true });
+      } else {
         card.addEventListener('click', () => {
-          selected.has(app.id) ? selected.delete(app.id) : selected.add(app.id);
-          card.classList.toggle('selected', selected.has(app.id));
+          const was = selected.has(app.id);
+          was ? selected.delete(app.id) : selected.add(app.id);
+          card.classList.toggle('selected', !was);
           updateBar();
         });
       }
-
       grid.appendChild(card);
     });
 
     sec.appendChild(grid);
     el.appendChild(sec);
+    sectionObserver.observe(sec);
   });
 }
 
 function updateBar() {
-  const count = document.getElementById('sel-count');
-  const names = document.getElementById('sel-names');
-  const bar = document.getElementById('sticky-bar');
   const apps = APPS.filter(a => selected.has(a.id));
-
-  count.textContent = apps.length;
-  names.textContent = apps.map(a => a.name).join(' · ');
-  bar.classList.toggle('visible', apps.length > 0);
+  document.getElementById('sel-count').textContent = apps.length;
+  document.getElementById('sel-names').textContent = apps.map(a => a.name).join(' · ');
+  document.getElementById('sticky-bar').classList.toggle('visible', apps.length > 0);
 }
 
-// ─── Direct Download All ───────────────────────────────────────────────────
+// ─── DOWNLOAD ─────────────────────────────────────────────────────────────
 document.getElementById('btn-inite').addEventListener('click', () => {
   const apps = APPS.filter(a => selected.has(a.id) && a.url);
   if (!apps.length) return;
-
-  // Build the list UI
-  const dlList = document.getElementById('dl-list');
-  dlList.innerHTML = '';
-  document.getElementById('dl-sub').textContent =
-    `${apps.length} download${apps.length !== 1 ? 's' : ''} starting…`;
-
+  const dlList = document.getElementById('dl-list'); dlList.innerHTML = '';
+  document.getElementById('dl-sub').textContent = `${apps.length} download${apps.length !== 1 ? 's' : ''} starting…`;
   const rowMap = {};
   apps.forEach(app => {
-    const row = document.createElement('div');
-    row.className = 'dl-app-row';
-    row.id = 'dlrow-' + app.id;
-
-    const iconWrap = document.createElement('div');
-    iconWrap.className = 'dl-app-icon';
+    const row = document.createElement('div'); row.className = 'dl-app-row';
+    const iw = document.createElement('div'); iw.className = 'dl-app-icon';
     if (app.icon) {
-      const img = document.createElement('img');
-      img.src = app.icon;
-      img.alt = app.name;
-      img.onerror = () => {
-        iconWrap.innerHTML = `<div class="fallback-letter">${app.name.slice(0,1)}</div>`;
-      };
-      iconWrap.appendChild(img);
-    } else {
-      iconWrap.innerHTML = `<div class="fallback-letter">${app.name.slice(0,1)}</div>`;
-    }
-
-    const nameEl = document.createElement('div');
-    nameEl.className = 'dl-app-name';
-    nameEl.textContent = app.name;
-
-    const statusEl = document.createElement('div');
-    statusEl.className = 'dl-app-status';
-    statusEl.id = 'dlstatus-' + app.id;
-    statusEl.textContent = 'Queued';
-
-    row.appendChild(iconWrap);
-    row.appendChild(nameEl);
-    row.appendChild(statusEl);
-    dlList.appendChild(row);
-    rowMap[app.id] = { row, statusEl };
+      const img = document.createElement('img'); img.src = app.icon; img.alt = app.name;
+      img.onerror = () => { iw.innerHTML = `<div class="fallback-letter">${app.name[0]}</div>`; };
+      iw.appendChild(img);
+    } else iw.innerHTML = `<div class="fallback-letter">${app.name[0]}</div>`;
+    const ne = document.createElement('div'); ne.className = 'dl-app-name'; ne.textContent = app.name;
+    const se = document.createElement('div'); se.className = 'dl-app-status'; se.textContent = 'Queued';
+    row.append(iw, ne, se); dlList.appendChild(row);
+    rowMap[app.id] = { row, statusEl: se };
   });
-
   document.getElementById('dl-overlay').classList.add('open');
-
-  // Trigger downloads with stagger to avoid browser blocking
   apps.forEach((app, i) => {
     setTimeout(() => {
       const { row, statusEl } = rowMap[app.id];
-      row.classList.add('downloading');
-      statusEl.textContent = 'Downloading…';
-
-      const a = document.createElement('a');
-      a.href = app.url;
+      row.classList.add('downloading'); statusEl.textContent = 'Downloading…';
+      const a = document.createElement('a'); a.href = app.url;
       a.setAttribute('download', app.name.replace(/\s+/g, '-') + '.dmg');
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-
-      // Mark done after a moment (we can't truly track progress)
-      setTimeout(() => {
-        row.classList.remove('downloading');
-        row.classList.add('done');
-        statusEl.textContent = 'In Downloads ✓';
-      }, 1800);
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(() => { row.classList.remove('downloading'); row.classList.add('done'); statusEl.textContent = 'In Downloads ✓'; }, 1800);
     }, i * 700);
   });
 });
 
-document.getElementById('btn-done').addEventListener('click', () => {
-  document.getElementById('dl-overlay').classList.remove('open');
-});
-
-document.getElementById('dl-overlay').addEventListener('click', e => {
-  if (e.target === document.getElementById('dl-overlay'))
-    document.getElementById('dl-overlay').classList.remove('open');
-});
-
+document.getElementById('btn-done').addEventListener('click', () => document.getElementById('dl-overlay').classList.remove('open'));
+document.getElementById('dl-overlay').addEventListener('click', e => { if (e.target === document.getElementById('dl-overlay')) document.getElementById('dl-overlay').classList.remove('open'); });
 document.getElementById('btn-clear').addEventListener('click', () => {
   selected.clear();
   document.querySelectorAll('.app-card.selected').forEach(c => c.classList.remove('selected'));
   updateBar();
 });
-
 document.getElementById('search').addEventListener('input', e => {
   const q = e.target.value.toLowerCase().trim();
-  buildSections(q ? APPS.filter(a =>
-    a.name.toLowerCase().includes(q) ||
-    a.desc.toLowerCase().includes(q) ||
-    a.category.toLowerCase().includes(q)
-  ) : APPS);
+  buildSections(q ? APPS.filter(a => a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.category.toLowerCase().includes(q)) : APPS);
 });
 
-// ─── Homebrew Auto-Update Engine ──────────────────────────────────────────
-const CACHE_KEY = 'inite_brew_v1';
-const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
-
+// ─── HOMEBREW SYNC ────────────────────────────────────────────────────────
+const CACHE_KEY = 'inite_brew_v1', CACHE_TTL = 6*60*60*1000;
 function setUpdateStatus(state, label) {
-  const dot = document.getElementById('update-dot');
-  const lbl = document.getElementById('update-label');
-  dot.className = 'update-dot ' + state;
-  lbl.textContent = label;
+  document.getElementById('update-dot').className = 'update-dot ' + state;
+  document.getElementById('update-label').textContent = label;
 }
-
 function applyBrewData(cask, data) {
-  const app = APPS.find(a => a.brew === cask);
-  if (!app) return;
-
-  // Use the url from Homebrew (works for most casks)
+  const app = APPS.find(a => a.brew === cask); if (!app) return;
   if (data.url) app.url = data.url;
   if (data.version) app.version = data.version;
-
-  // Update version badge on any rendered card
   const badge = document.getElementById('vbadge-' + app.id);
-  if (badge) {
-    badge.className = 'version-badge';
-    badge.textContent = data.version ? 'v' + data.version : '—';
-  }
-
-  // Enable card if it was greyed out (no-url) and now has a url
+  if (badge) { badge.className = 'version-badge'; badge.textContent = data.version ? 'v' + data.version : '—'; }
   if (app.url) {
     const card = document.querySelector(`.app-card[data-id="${app.id}"]`);
     if (card && card.classList.contains('no-url')) {
-      card.classList.remove('no-url');
-      const badge2 = card.querySelector('.no-url-badge');
-      if (badge2) badge2.remove();
+      card.classList.remove('no-url'); card.style.opacity = '';
+      const b = card.querySelector('.no-url-badge'); if (b) b.remove();
       card.addEventListener('click', () => {
-        selected.has(app.id) ? selected.delete(app.id) : selected.add(app.id);
-        card.classList.toggle('selected', selected.has(app.id));
-        updateBar();
+        const was = selected.has(app.id); was ? selected.delete(app.id) : selected.add(app.id);
+        card.classList.toggle('selected', !was); updateBar();
       });
     }
   }
 }
-
 async function fetchBrew(cask) {
   const res = await fetch(`https://formulae.brew.sh/api/cask/${cask}.json`);
   if (!res.ok) throw new Error('HTTP ' + res.status);
   return res.json();
 }
-
 async function runBrewSync() {
   setUpdateStatus('syncing', 'Checking for updates…');
-
-  // Load cache
   let cache = {};
   try { cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); } catch {}
-
   const now = Date.now();
   const casks = APPS.filter(a => a.brew).map(a => a.brew);
   let fetched = 0, fromCache = 0, failed = 0;
-
-  // Apply cached data immediately so cards aren't blank while fetching
   casks.forEach(cask => {
-    if (cache[cask] && (now - cache[cask].fetchedAt) < CACHE_TTL) {
-      applyBrewData(cask, cache[cask]);
-      fromCache++;
-    }
+    if (cache[cask] && (now - cache[cask].fetchedAt) < CACHE_TTL) { applyBrewData(cask, cache[cask]); fromCache++; }
   });
-
-  // Fetch stale/missing entries
-  const stale = casks.filter(cask => !cache[cask] || (now - cache[cask].fetchedAt) >= CACHE_TTL);
-
-  if (stale.length === 0) {
+  const stale = casks.filter(c => !cache[c] || (now - cache[c].fetchedAt) >= CACHE_TTL);
+  if (!stale.length) {
     const ago = Math.round((now - Math.min(...casks.map(c => cache[c]?.fetchedAt || now))) / 60000);
-    setUpdateStatus('done', `Up to date · cached ${ago}m ago`);
-    return;
+    setUpdateStatus('done', `Up to date · cached ${ago}m ago`); return;
   }
-
-  // Batch fetch with concurrency limit of 6
   const CHUNK = 6;
   for (let i = 0; i < stale.length; i += CHUNK) {
-    const chunk = stale.slice(i, i + CHUNK);
-    await Promise.allSettled(chunk.map(async cask => {
+    await Promise.allSettled(stale.slice(i, i+CHUNK).map(async cask => {
       try {
         const data = await fetchBrew(cask);
         cache[cask] = { url: data.url, version: data.version, fetchedAt: now };
-        applyBrewData(cask, data);
-        fetched++;
+        applyBrewData(cask, data); fetched++;
       } catch {
         failed++;
-        // Mark badge as unavailable
         const app = APPS.find(a => a.brew === cask);
-        if (app) {
-          const badge = document.getElementById('vbadge-' + app.id);
-          if (badge) { badge.className = 'version-badge'; badge.textContent = '—'; }
-        }
+        if (app) { const b = document.getElementById('vbadge-' + app.id); if (b) { b.className = 'version-badge'; b.textContent = '—'; } }
       }
     }));
-    setUpdateStatus('syncing', `Syncing… ${Math.min(i + CHUNK, stale.length)}/${stale.length}`);
+    setUpdateStatus('syncing', `Syncing… ${Math.min(i+CHUNK, stale.length)}/${stale.length}`);
   }
-
-  // Save updated cache
   try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch {}
-
-  const label = failed > 0
-    ? `Updated ${fetched} · ${failed} unavailable`
-    : `All ${fetched + fromCache} apps up to date`;
-  setUpdateStatus('done', label);
-
-  // Rebuild sections so card enabled/disabled states are correct
+  setUpdateStatus('done', failed > 0 ? `Updated ${fetched} · ${failed} unavailable` : `All ${fetched+fromCache} apps up to date`);
   const q = document.getElementById('search').value.toLowerCase().trim();
-  buildSections(q ? APPS.filter(a =>
-    a.name.toLowerCase().includes(q) ||
-    a.desc.toLowerCase().includes(q) ||
-    a.category.toLowerCase().includes(q)
-  ) : APPS);
+  buildSections(q ? APPS.filter(a => a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.category.toLowerCase().includes(q)) : APPS);
 }
 
-// ─── Init ─────────────────────────────────────────────────────────────────
 buildSections(APPS);
 runBrewSync();
 </script>
