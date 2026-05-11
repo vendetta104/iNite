@@ -26,7 +26,7 @@
   --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.13), 0 3px 10px rgba(0,0,0,0.07);
   --shadow-bar: 0 8px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
   --nav-bg: rgba(242,242,247,0.85);
-  --bar-bg: rgba(255,255,255,0.92);
+  --bar-bg: rgba(255,255,255,0.95);
   --green: #30d158;
   --orb1: rgba(0,122,255,0.18);
   --orb2: rgba(88,86,214,0.14);
@@ -54,7 +54,7 @@
     --shadow-card-hover: 0 12px 44px rgba(0,0,0,0.7), 0 4px 12px rgba(0,0,0,0.4);
     --shadow-bar: 0 8px 40px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
     --nav-bg: rgba(10,10,15,0.88);
-    --bar-bg: rgba(20,20,28,0.94);
+    --bar-bg: rgba(20,20,28,0.97);
     --orb1: rgba(10,132,255,0.22);
     --orb2: rgba(94,92,230,0.18);
     --orb3: rgba(48,209,88,0.12);
@@ -373,6 +373,38 @@ h1 {
   background: var(--surface2); border-radius: 100px; padding: 2px 8px;
 }
 
+/* ── SEE ALL BUTTON ── */
+.btn-see-all {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 100px; padding: 4px 12px;
+  font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 600;
+  color: var(--blue); cursor: pointer;
+  transition: all var(--t); white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+.btn-see-all:hover {
+  background: var(--blue-light); border-color: rgba(0,122,255,0.3);
+  transform: translateY(-1px);
+}
+.btn-see-all svg {
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+.btn-see-all.expanded svg { transform: rotate(180deg); }
+
+/* ── HIDDEN CARDS ── */
+.app-card.cat-hidden {
+  display: none;
+}
+.app-card.cat-hidden.card-visible {
+  display: flex;
+  animation: cardRevealHidden 0.35s cubic-bezier(0.34,1.2,0.64,1) forwards;
+}
+@keyframes cardRevealHidden {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 /* ── APP GRID ── */
 .app-grid {
   display: grid;
@@ -400,7 +432,6 @@ h1 {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* shimmer sweep */
 .app-card::before {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,0.1) 50%, transparent 62%);
@@ -465,7 +496,6 @@ h1 {
   animation: blink 1.4s ease-in-out infinite;
 }
 
-/* check */
 .check {
   position: absolute; top: 11px; right: 11px;
   width: 22px; height: 22px;
@@ -515,6 +545,16 @@ h1 {
   min-width: 30px; text-align: center;
 }
 
+/* Clickable selected-count trigger (when > 3) */
+.sel-trigger {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; border-radius: 100px;
+  padding: 3px 4px 3px 0;
+  transition: opacity var(--t);
+  position: relative;
+}
+.sel-trigger:hover { opacity: 0.8; }
+
 .sel-info { min-width: 0; }
 .sel-title { font-size: 0.88rem; font-weight: 600; color: var(--text); white-space: nowrap; }
 .sel-list {
@@ -523,6 +563,87 @@ h1 {
   max-width: 240px; margin-top: 1px;
 }
 
+.sel-chevron {
+  color: var(--text-faint); flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), color var(--t);
+}
+.sel-chevron.open { transform: rotate(180deg); color: var(--blue); }
+
+/* ── SELECTED APPS DROPDOWN ── */
+.sel-dropdown {
+  position: fixed;
+  bottom: 86px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--bar-bg);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-radius: 20px;
+  padding: 8px;
+  box-shadow: var(--shadow-bar), 0 0 0 1px var(--border);
+  z-index: 299;
+  min-width: 260px;
+  max-width: calc(100vw - 3rem);
+  max-height: 320px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.4,0,0.2,1),
+              transform 0.25s cubic-bezier(0.34,1.2,0.64,1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.sel-dropdown.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+.sel-dropdown::-webkit-scrollbar { width: 4px; }
+.sel-dropdown::-webkit-scrollbar-track { background: transparent; }
+.sel-dropdown::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.dropdown-header {
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-faint);
+  padding: 6px 10px 8px;
+}
+
+.dropdown-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 12px;
+  transition: background var(--t); cursor: default;
+}
+.dropdown-item:hover { background: var(--surface2); }
+
+.dropdown-icon {
+  width: 32px; height: 32px; border-radius: 9px;
+  overflow: hidden; background: var(--surface2); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.dropdown-icon img {
+  width: 100%; height: 100%; object-fit: contain; border-radius: 9px;
+}
+.dropdown-icon .di-fallback {
+  font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+}
+
+.dropdown-name {
+  flex: 1; font-size: 0.84rem; font-weight: 500; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.dropdown-remove {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: transparent; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-faint); flex-shrink: 0;
+  transition: background var(--t), color var(--t);
+  padding: 0;
+}
+.dropdown-remove:hover { background: rgba(255,59,48,0.12); color: #ff3b30; }
+.dropdown-remove svg { display: block; }
+
+/* ── BAR RIGHT ── */
 .bar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
 .btn-clear {
@@ -566,6 +687,7 @@ h1 {
   box-shadow: 0 32px 80px rgba(0,0,0,0.25), 0 0 0 1px var(--border);
   transform: translateY(30px) scale(0.95);
   transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1);
+  margin: 0 1rem;
 }
 .dl-overlay.open .dl-sheet { transform: translateY(0) scale(1); }
 
@@ -587,8 +709,12 @@ h1 {
 
 .dl-app-list {
   display: flex; flex-direction: column; gap: 8px;
-  margin-bottom: 1.8rem; max-height: 240px; overflow-y: auto;
+  margin-bottom: 1.8rem; max-height: 260px; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
 }
+.dl-app-list::-webkit-scrollbar { width: 4px; }
+.dl-app-list::-webkit-scrollbar-track { background: transparent; }
+.dl-app-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 .dl-app-row {
   display: flex; align-items: center; gap: 12px;
@@ -600,15 +726,27 @@ h1 {
 .dl-app-row.done { border-color: var(--green); }
 .dl-app-row.skipped { opacity: 0.4; }
 
+/* ── FIXED DOWNLOAD ICON ── */
 .dl-app-icon {
-  width: 34px; height: 34px; border-radius: 9px; overflow: hidden;
+  width: 40px; height: 40px; border-radius: 10px;
   flex-shrink: 0; background: var(--bg);
   display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
 }
-.dl-app-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 9px; }
-.dl-app-icon .fallback-letter { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+.dl-app-icon img {
+  width: 40px; height: 40px;
+  object-fit: contain; border-radius: 10px;
+  display: block;
+}
+.dl-app-icon .fallback-letter {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--surface2), var(--border));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 700; color: var(--text-muted);
+}
+
 .dl-app-name { flex: 1; font-size: 0.86rem; font-weight: 500; color: var(--text); }
-.dl-app-status { font-size: 0.72rem; color: var(--text-faint); font-weight: 400; }
+.dl-app-status { font-size: 0.72rem; color: var(--text-faint); font-weight: 400; white-space: nowrap; }
 .dl-app-row.downloading .dl-app-status { color: var(--blue); font-weight: 600; }
 .dl-app-row.done .dl-app-status { color: var(--green); font-weight: 600; }
 
@@ -644,6 +782,7 @@ h1 {
   .request-label { display: none; }
   .hero-stats { gap: 1.2rem; }
   .stat-num { font-size: 1.3rem; }
+  .sel-dropdown { bottom: 80px; }
 }
 </style>
 </head>
@@ -724,12 +863,24 @@ h1 {
   <div id="sections"></div>
 </div>
 
+<!-- Selected apps dropdown -->
+<div class="sel-dropdown" id="sel-dropdown">
+  <div class="dropdown-header">Selected Apps</div>
+  <div id="dropdown-items"></div>
+</div>
+
 <div class="sticky-bar" id="sticky-bar">
   <div class="bar-left">
-    <div class="sel-bubble" id="sel-count">0</div>
-    <div class="sel-info">
-      <div class="sel-title">apps selected</div>
-      <div class="sel-list" id="sel-names"></div>
+    <div class="sel-trigger" id="sel-trigger">
+      <div class="sel-bubble" id="sel-count">0</div>
+      <div class="sel-info">
+        <div class="sel-title">apps selected</div>
+        <div class="sel-list" id="sel-names"></div>
+      </div>
+      <svg class="sel-chevron" id="sel-chevron" width="14" height="14" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
     </div>
   </div>
   <div class="bar-right">
@@ -769,7 +920,7 @@ h1 {
 </div>
 
 <script>
-// ─── FORM LINK ─────────────────────────────────────────────────────────────
+// ─── FORM LINK ────────────────────────────────────────────────────────────
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfXGZ9lDxfaJ0Ev2CO654zO7ZoMPlr8y3__JUBjcuhcZlJBrg/viewform?usp=publish-editor';
 (function(){
   const btn = document.getElementById('btn-request');
@@ -784,7 +935,7 @@ const APPS = [
   { id:'brave',       name:'Brave',          icon:'/browsers/brave.png',        brew:'brave-browser',      url:'', category:'Web Browsers',     desc:'Privacy-first browser' },
   { id:'edge',        name:'Edge',           icon:'/browsers/edge.png',         brew:'microsoft-edge',     url:'', category:'Web Browsers',     desc:"Microsoft's browser" },
   { id:'opera',       name:'Opera',          icon:'/browsers/opera.png',        brew:'opera',              url:'', category:'Web Browsers',     desc:'Built-in VPN & more' },
-  { id:'chatgpt-atlas',       name:'ChatGPT Atlas',          icon:'/browsers/chatgpt-atlas.png',        brew:'chatgpt-atlas',              url:'', category:'Web Browsers',     desc:"OpenAI's official browser with ChatGPT built-in" },
+  { id:'chatgpt-atlas', name:'ChatGPT Atlas', icon:'/browsers/chatgpt-atlas.png', brew:'chatgpt-atlas',    url:'', category:'Web Browsers',     desc:"OpenAI's official browser with ChatGPT built-in" },
 
   { id:'discord',     name:'Discord',        icon:'/communication/discord.png', brew:'discord',            url:'', category:'Communication',    desc:'Voice, video & text chat' },
   { id:'slack',       name:'Slack',          icon:'/communication/slack.png',   brew:'slack',              url:'', category:'Communication',    desc:'Team messaging platform' },
@@ -802,7 +953,7 @@ const APPS = [
   { id:'vlc',         name:'VLC',            icon:'/media/vlc.png',             brew:'vlc',                url:'', category:'Media',            desc:'Universal media player' },
   { id:'spotify',     name:'Spotify',        icon:'/media/spotify.png',         brew:'spotify',            url:'', category:'Media',            desc:'Music & podcast streaming' },
   { id:'iina',        name:'IINA',           icon:'/media/iina.png',            brew:'iina',               url:'', category:'Media',            desc:'Modern video player for Mac' },
-  { id:'handbrake',   name:'HandBrake',      icon:'/media/handbrake.png',       brew:'handbrake',          url:'', category:'Media',            desc:'Open source video transcoder' },
+  { id:'handbrake',   name:'HandBrake',      icon:'/media/handbrake.png',       brew:'handbrake',          url:'https://github.com/HandBrake/HandBrake/releases/latest', category:'Media', desc:'Open source video transcoder' },
   { id:'audacity',    name:'Audacity',       icon:'/media/audacity.png',        brew:'audacity',           url:'', category:'Media',            desc:'Audio editor & recorder' },
 
   { id:'notion',      name:'Notion',         icon:'/productivity/notion.png',   brew:'notion',             url:'', category:'Productivity',     desc:'All-in-one workspace' },
@@ -830,17 +981,17 @@ const APPS = [
 
   { id:'keka',        name:'Keka',           icon:'/compression/keka.png',      brew:'keka',               url:'', category:'Compression',      desc:'macOS file archiver' },
 
-  { id:'minecraft',   name:'Minecraft Launcher',      icon:'/games/minecraft.png',       brew:'minecraft',          url:'', category:'Games',            desc:'Sandbox construction video game' },
-  { id:'roblox',      name:'Roblox',                  icon:'/games/roblox.png',          brew:'roblox',             url:'', category:'Games',            desc:'Online multiplayer game platform' },
-  { id:'steam',       name:'Steam',                   icon:'/games/steam.png',           brew:'steam',              url:'', category:'Games',            desc:'Video game digital distribution service' },
-  { id:'epicgames',   name:'Epic Games Store',        icon:'/games/epicgames.png',       brew:'epic-games',         url:'', category:'Games',            desc:'Launcher for "Epic Games" games' },
+  { id:'minecraft',   name:'Minecraft Launcher', icon:'/games/minecraft.png',   brew:'minecraft',          url:'', category:'Games',            desc:'Sandbox construction video game' },
+  { id:'roblox',      name:'Roblox',             icon:'/games/roblox.png',      brew:'roblox',             url:'', category:'Games',            desc:'Online multiplayer game platform' },
+  { id:'steam',       name:'Steam',              icon:'/games/steam.png',       brew:'steam',              url:'', category:'Games',            desc:'Video game digital distribution service' },
+  { id:'epicgames',   name:'Epic Games Store',   icon:'/games/epicgames.png',   brew:'epic-games',         url:'', category:'Games',            desc:'Launcher for "Epic Games" games' },
 
-  { id:'chatgpt',   name:'ChatGPT',        icon:'/ai/chatgpt.png',       brew:'chatgpt',         url:'', category:'Artificial Intelligence',            desc:"OpenAI's official ChatGPT desktop app" }, 
-  { id:'gemini',    name:'Gemini',         icon:'/ai/gemini.png',        brew:'google-gemini',   url:'', category:'Artificial Intelligence',            desc:"Native desktop AI assistant from Google" },
-  { id:'claude',    name:'Claude',         icon:'/ai/claude.png',        brew:'claude',          url:'', category:'Artificial Intelligence',            desc:"Anthropic's official Claude AI desktop app" },
+  { id:'chatgpt',   name:'ChatGPT',   icon:'/ai/chatgpt.png',   brew:'chatgpt',       url:'', category:'Artificial Intelligence', desc:"OpenAI's official ChatGPT desktop app" },
+  { id:'gemini',    name:'Gemini',    icon:'/ai/gemini.png',    brew:'google-gemini', url:'', category:'Artificial Intelligence', desc:"Native desktop AI assistant from Google" },
+  { id:'claude',    name:'Claude',    icon:'/ai/claude.png',    brew:'claude',        url:'', category:'Artificial Intelligence', desc:"Anthropic's official Claude AI desktop app" },
 
-  { id:'capcut',    name:'CapCut',         icon:'/videoediting/capcut.png',        brew:'capcut',          url:'', category:'Video Editing',            desc:"Video editing and image design platform" },
-  { id:'davinciresolve',    name:'DaVinci Resolve',         icon:'/videoediting/davinciresolve.png',        brew:'',          url:'', category:'Video Editing',            desc:"Professional Editing, Color, Effects and Audio Post" },
+  { id:'capcut',         name:'CapCut',         icon:'/videoediting/capcut.png',         brew:'capcut',  url:'', category:'Video Editing', desc:"Video editing and image design platform" },
+  { id:'davinciresolve', name:'DaVinci Resolve', icon:'/videoediting/davinciresolve.png', brew:'',        url:'', category:'Video Editing', desc:"Professional Editing, Color, Effects and Audio Post" },
 ];
 
 // ─── ANIMATED STATS ───────────────────────────────────────────────────────
@@ -860,7 +1011,10 @@ setTimeout(() => {
 
 // ─── STATE ────────────────────────────────────────────────────────────────
 const selected = new Set();
+const CAT_LIMIT = 5; // show this many cards before "See All"
+let dropdownOpen = false;
 
+// ─── ICON HELPER ─────────────────────────────────────────────────────────
 function makeIconEl(app) {
   const wrap = document.createElement('div');
   wrap.className = 'app-icon-wrap';
@@ -884,19 +1038,46 @@ function makeIconEl(app) {
   return wrap;
 }
 
+// ─── DOWNLOAD ICON HELPER ────────────────────────────────────────────────
+function makeDlIconEl(app) {
+  const wrap = document.createElement('div');
+  wrap.className = 'dl-app-icon';
+  if (app.icon) {
+    const img = document.createElement('img');
+    img.src = app.icon;
+    img.alt = app.name;
+    img.width = 40;
+    img.height = 40;
+    img.onerror = () => {
+      wrap.innerHTML = '';
+      const fb = document.createElement('div');
+      fb.className = 'fallback-letter';
+      fb.textContent = app.name.slice(0,2).toUpperCase();
+      wrap.appendChild(fb);
+    };
+    wrap.appendChild(img);
+  } else {
+    const fb = document.createElement('div');
+    fb.className = 'fallback-letter';
+    fb.textContent = app.name.slice(0,2).toUpperCase();
+    wrap.appendChild(fb);
+  }
+  return wrap;
+}
+
 // ─── SCROLL REVEAL ────────────────────────────────────────────────────────
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     entry.target.classList.add('section-visible');
-    entry.target.querySelectorAll('.app-card').forEach((card, i) => {
+    entry.target.querySelectorAll('.app-card:not(.cat-hidden)').forEach((card, i) => {
       setTimeout(() => card.classList.add('card-visible'), i * 45);
     });
     sectionObserver.unobserve(entry.target);
   });
 }, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
 
-// ─── BUILD ────────────────────────────────────────────────────────────────
+// ─── BUILD SECTIONS ───────────────────────────────────────────────────────
 function buildSections(apps) {
   const el = document.getElementById('sections');
   el.innerHTML = '';
@@ -912,18 +1093,35 @@ function buildSections(apps) {
     const sec = document.createElement('div');
     sec.className = 'cat-section';
 
+    // ── category header ──
     const lw = document.createElement('div'); lw.className = 'cat-label-wrap';
     const lb = document.createElement('div'); lb.className = 'cat-label'; lb.textContent = cat;
     const line = document.createElement('div'); line.className = 'cat-line';
     const cnt = document.createElement('div'); cnt.className = 'cat-count'; cnt.textContent = catApps.length;
+
     lw.append(lb, line, cnt);
+
+    // "See All" button for categories with > CAT_LIMIT apps
+    let btnSeeAll = null;
+    if (catApps.length > CAT_LIMIT) {
+      btnSeeAll = document.createElement('button');
+      btnSeeAll.className = 'btn-see-all';
+      btnSeeAll.innerHTML = `See all <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
+      lw.appendChild(btnSeeAll);
+    }
+
     sec.appendChild(lw);
 
+    // ── app grid ──
     const grid = document.createElement('div'); grid.className = 'app-grid';
 
-    catApps.forEach(app => {
+    catApps.forEach((app, idx) => {
       const card = document.createElement('div');
-      card.className = 'app-card' + (selected.has(app.id) ? ' selected' : '') + (!app.url ? ' no-url' : '');
+      const isHidden = btnSeeAll && idx >= CAT_LIMIT;
+      card.className = 'app-card'
+        + (selected.has(app.id) ? ' selected' : '')
+        + (!app.url ? ' no-url' : '')
+        + (isHidden ? ' cat-hidden' : '');
       card.dataset.id = app.id;
       card.appendChild(makeIconEl(app));
 
@@ -938,7 +1136,9 @@ function buildSections(apps) {
       if (!app.url) {
         const badge = document.createElement('div'); badge.className = 'no-url-badge'; badge.textContent = 'Soon';
         card.appendChild(badge);
-        card.addEventListener('animationend', () => { card.style.opacity = '0.42'; }, { once: true });
+        card.addEventListener('animationend', () => {
+          if (!card.classList.contains('cat-hidden')) card.style.opacity = '0.42';
+        }, { once: true });
       } else {
         card.addEventListener('click', () => {
           const was = selected.has(app.id);
@@ -953,13 +1153,136 @@ function buildSections(apps) {
     sec.appendChild(grid);
     el.appendChild(sec);
     sectionObserver.observe(sec);
+
+    // ── See All / See Less toggle ──
+    if (btnSeeAll) {
+      let expanded = false;
+      btnSeeAll.addEventListener('click', () => {
+        expanded = !expanded;
+        const hiddenCards = grid.querySelectorAll('.app-card.cat-hidden');
+        if (expanded) {
+          btnSeeAll.innerHTML = `See less <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
+          btnSeeAll.classList.add('expanded');
+          hiddenCards.forEach((card, i) => {
+            card.classList.remove('cat-hidden');
+            if (!card.app_url_checked) {
+              // dim no-url cards
+              if (card.classList.contains('no-url')) {
+                setTimeout(() => { card.style.opacity = '0.42'; }, 400);
+              }
+              card.app_url_checked = true;
+            }
+            setTimeout(() => card.classList.add('card-visible'), i * 40);
+          });
+        } else {
+          btnSeeAll.innerHTML = `See all <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
+          btnSeeAll.classList.remove('expanded');
+          hiddenCards.forEach(card => {
+            card.classList.add('cat-hidden');
+            card.classList.remove('card-visible');
+          });
+          // also hide the ones that were shown
+          const allHidden = grid.querySelectorAll(`.app-card`);
+          allHidden.forEach((card, i) => {
+            if (i >= CAT_LIMIT) {
+              card.classList.add('cat-hidden');
+              card.classList.remove('card-visible');
+            }
+          });
+        }
+      });
+    }
   });
 }
 
+// ─── DROPDOWN HELPERS ─────────────────────────────────────────────────────
+function buildDropdown() {
+  const container = document.getElementById('dropdown-items');
+  container.innerHTML = '';
+  const apps = APPS.filter(a => selected.has(a.id));
+  apps.forEach(app => {
+    const item = document.createElement('div');
+    item.className = 'dropdown-item';
+
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'dropdown-icon';
+    if (app.icon) {
+      const img = document.createElement('img');
+      img.src = app.icon; img.alt = app.name;
+      img.onerror = () => {
+        iconWrap.innerHTML = '';
+        const fb = document.createElement('div'); fb.className = 'di-fallback';
+        fb.textContent = app.name.slice(0,2).toUpperCase();
+        iconWrap.appendChild(fb);
+      };
+      iconWrap.appendChild(img);
+    } else {
+      const fb = document.createElement('div'); fb.className = 'di-fallback';
+      fb.textContent = app.name.slice(0,2).toUpperCase();
+      iconWrap.appendChild(fb);
+    }
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'dropdown-name'; nameEl.textContent = app.name;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'dropdown-remove';
+    removeBtn.title = 'Remove ' + app.name;
+    removeBtn.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+    removeBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      selected.delete(app.id);
+      // deselect the card
+      const card = document.querySelector(`.app-card[data-id="${app.id}"]`);
+      if (card) card.classList.remove('selected');
+      updateBar();
+      if (selected.size === 0) closeDropdown();
+    });
+
+    item.append(iconWrap, nameEl, removeBtn);
+    container.appendChild(item);
+  });
+}
+
+function openDropdown() {
+  if (selected.size <= 3) return;
+  buildDropdown();
+  document.getElementById('sel-dropdown').classList.add('open');
+  document.getElementById('sel-chevron').classList.add('open');
+  dropdownOpen = true;
+}
+
+function closeDropdown() {
+  document.getElementById('sel-dropdown').classList.remove('open');
+  document.getElementById('sel-chevron').classList.remove('open');
+  dropdownOpen = false;
+}
+
+function toggleDropdown() {
+  if (selected.size <= 3) { closeDropdown(); return; }
+  dropdownOpen ? closeDropdown() : openDropdown();
+}
+
+// ─── UPDATE BAR ───────────────────────────────────────────────────────────
 function updateBar() {
   const apps = APPS.filter(a => selected.has(a.id));
   document.getElementById('sel-count').textContent = apps.length;
-  document.getElementById('sel-names').textContent = apps.map(a => a.name).join(' · ');
+
+  const chevron = document.getElementById('sel-chevron');
+  const trigger = document.getElementById('sel-trigger');
+
+  if (apps.length > 3) {
+    document.getElementById('sel-names').textContent = apps.length + ' apps selected';
+    chevron.style.display = '';
+    trigger.style.cursor = 'pointer';
+    if (dropdownOpen) buildDropdown(); // refresh dropdown if open
+  } else {
+    document.getElementById('sel-names').textContent = apps.map(a => a.name).join(' · ');
+    chevron.style.display = 'none';
+    closeDropdown();
+    trigger.style.cursor = 'default';
+  }
+
   document.getElementById('sticky-bar').classList.toggle('visible', apps.length > 0);
 }
 
@@ -967,23 +1290,29 @@ function updateBar() {
 document.getElementById('btn-inite').addEventListener('click', () => {
   const apps = APPS.filter(a => selected.has(a.id) && a.url);
   if (!apps.length) return;
-  const dlList = document.getElementById('dl-list'); dlList.innerHTML = '';
+
+  closeDropdown();
+
+  const dlList = document.getElementById('dl-list');
+  dlList.innerHTML = '';
   document.getElementById('dl-sub').textContent = `${apps.length} download${apps.length !== 1 ? 's' : ''} starting…`;
+
   const rowMap = {};
   apps.forEach(app => {
-    const row = document.createElement('div'); row.className = 'dl-app-row';
-    const iw = document.createElement('div'); iw.className = 'dl-app-icon';
-    if (app.icon) {
-      const img = document.createElement('img'); img.src = app.icon; img.alt = app.name;
-      img.onerror = () => { iw.innerHTML = `<div class="fallback-letter">${app.name[0]}</div>`; };
-      iw.appendChild(img);
-    } else iw.innerHTML = `<div class="fallback-letter">${app.name[0]}</div>`;
+    const row = document.createElement('div');
+    row.className = 'dl-app-row';
+
+    const iw = makeDlIconEl(app);
     const ne = document.createElement('div'); ne.className = 'dl-app-name'; ne.textContent = app.name;
     const se = document.createElement('div'); se.className = 'dl-app-status'; se.textContent = 'Queued';
-    row.append(iw, ne, se); dlList.appendChild(row);
+
+    row.append(iw, ne, se);
+    dlList.appendChild(row);
     rowMap[app.id] = { row, statusEl: se };
   });
+
   document.getElementById('dl-overlay').classList.add('open');
+
   apps.forEach((app, i) => {
     setTimeout(() => {
       const { row, statusEl } = rowMap[app.id];
@@ -991,32 +1320,65 @@ document.getElementById('btn-inite').addEventListener('click', () => {
       const a = document.createElement('a'); a.href = app.url;
       a.setAttribute('download', app.name.replace(/\s+/g, '-') + '.dmg');
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      setTimeout(() => { row.classList.remove('downloading'); row.classList.add('done'); statusEl.textContent = 'In Downloads ✓'; }, 1800);
+      setTimeout(() => {
+        row.classList.remove('downloading'); row.classList.add('done');
+        statusEl.textContent = 'In Downloads ✓';
+      }, 1800);
     }, i * 700);
   });
 });
 
-document.getElementById('btn-done').addEventListener('click', () => document.getElementById('dl-overlay').classList.remove('open'));
-document.getElementById('dl-overlay').addEventListener('click', e => { if (e.target === document.getElementById('dl-overlay')) document.getElementById('dl-overlay').classList.remove('open'); });
+document.getElementById('btn-done').addEventListener('click', () =>
+  document.getElementById('dl-overlay').classList.remove('open'));
+
+document.getElementById('dl-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('dl-overlay'))
+    document.getElementById('dl-overlay').classList.remove('open');
+});
+
 document.getElementById('btn-clear').addEventListener('click', () => {
   selected.clear();
   document.querySelectorAll('.app-card.selected').forEach(c => c.classList.remove('selected'));
+  closeDropdown();
   updateBar();
 });
+
+// ─── SEL TRIGGER (dropdown toggle) ────────────────────────────────────────
+document.getElementById('sel-trigger').addEventListener('click', () => {
+  if (selected.size > 3) toggleDropdown();
+});
+
+// close dropdown when clicking outside
+document.addEventListener('click', e => {
+  if (!dropdownOpen) return;
+  const bar = document.getElementById('sticky-bar');
+  const dd = document.getElementById('sel-dropdown');
+  if (!bar.contains(e.target) && !dd.contains(e.target)) closeDropdown();
+});
+
+// ─── SEARCH ───────────────────────────────────────────────────────────────
 document.getElementById('search').addEventListener('input', e => {
   const q = e.target.value.toLowerCase().trim();
-  buildSections(q ? APPS.filter(a => a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.category.toLowerCase().includes(q)) : APPS);
+  closeDropdown();
+  buildSections(q ? APPS.filter(a =>
+    a.name.toLowerCase().includes(q) ||
+    a.desc.toLowerCase().includes(q) ||
+    a.category.toLowerCase().includes(q)
+  ) : APPS);
 });
 
 // ─── HOMEBREW SYNC ────────────────────────────────────────────────────────
 const CACHE_KEY = 'inite_brew_v1', CACHE_TTL = 6*60*60*1000;
+
 function setUpdateStatus(state, label) {
   document.getElementById('update-dot').className = 'update-dot ' + state;
   document.getElementById('update-label').textContent = label;
 }
+
 function applyBrewData(cask, data) {
   const app = APPS.find(a => a.brew === cask); if (!app) return;
-  if (data.url) app.url = data.url;
+  // Only overwrite url if it's empty (don't replace manual fallbacks)
+  if (data.url && !app.url) app.url = data.url;
   if (data.version) app.version = data.version;
   const badge = document.getElementById('vbadge-' + app.id);
   if (badge) { badge.className = 'version-badge'; badge.textContent = data.version ? 'v' + data.version : '—'; }
@@ -1032,11 +1394,13 @@ function applyBrewData(cask, data) {
     }
   }
 }
+
 async function fetchBrew(cask) {
   const res = await fetch(`https://formulae.brew.sh/api/cask/${cask}.json`);
   if (!res.ok) throw new Error('HTTP ' + res.status);
   return res.json();
 }
+
 async function runBrewSync() {
   setUpdateStatus('syncing', 'Checking for updates…');
   let cache = {};
@@ -1044,14 +1408,19 @@ async function runBrewSync() {
   const now = Date.now();
   const casks = APPS.filter(a => a.brew).map(a => a.brew);
   let fetched = 0, fromCache = 0, failed = 0;
+
   casks.forEach(cask => {
-    if (cache[cask] && (now - cache[cask].fetchedAt) < CACHE_TTL) { applyBrewData(cask, cache[cask]); fromCache++; }
+    if (cache[cask] && (now - cache[cask].fetchedAt) < CACHE_TTL) {
+      applyBrewData(cask, cache[cask]); fromCache++;
+    }
   });
+
   const stale = casks.filter(c => !cache[c] || (now - cache[c].fetchedAt) >= CACHE_TTL);
   if (!stale.length) {
     const ago = Math.round((now - Math.min(...casks.map(c => cache[c]?.fetchedAt || now))) / 60000);
     setUpdateStatus('done', `Up to date · cached ${ago}m ago`); return;
   }
+
   const CHUNK = 6;
   for (let i = 0; i < stale.length; i += CHUNK) {
     await Promise.allSettled(stale.slice(i, i+CHUNK).map(async cask => {
@@ -1062,17 +1431,31 @@ async function runBrewSync() {
       } catch {
         failed++;
         const app = APPS.find(a => a.brew === cask);
-        if (app) { const b = document.getElementById('vbadge-' + app.id); if (b) { b.className = 'version-badge'; b.textContent = '—'; } }
+        if (app) {
+          const b = document.getElementById('vbadge-' + app.id);
+          if (b) { b.className = 'version-badge'; b.textContent = '—'; }
+        }
       }
     }));
     setUpdateStatus('syncing', `Syncing… ${Math.min(i+CHUNK, stale.length)}/${stale.length}`);
   }
+
   try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch {}
-  setUpdateStatus('done', failed > 0 ? `Updated ${fetched} · ${failed} unavailable` : `All ${fetched+fromCache} apps up to date`);
+  setUpdateStatus('done', failed > 0
+    ? `Updated ${fetched} · ${failed} unavailable`
+    : `All ${fetched+fromCache} apps up to date`);
+
   const q = document.getElementById('search').value.toLowerCase().trim();
-  buildSections(q ? APPS.filter(a => a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.category.toLowerCase().includes(q)) : APPS);
+  buildSections(q ? APPS.filter(a =>
+    a.name.toLowerCase().includes(q) ||
+    a.desc.toLowerCase().includes(q) ||
+    a.category.toLowerCase().includes(q)
+  ) : APPS);
 }
 
+// ─── INIT ─────────────────────────────────────────────────────────────────
+// Hide chevron initially
+document.getElementById('sel-chevron').style.display = 'none';
 buildSections(APPS);
 runBrewSync();
 </script>
