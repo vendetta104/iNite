@@ -545,7 +545,6 @@ h1 {
   min-width: 30px; text-align: center;
 }
 
-/* Clickable selected-count trigger (when > 3) */
 .sel-trigger {
   display: flex; align-items: center; gap: 8px;
   cursor: pointer; border-radius: 100px;
@@ -726,7 +725,6 @@ h1 {
 .dl-app-row.done { border-color: var(--green); }
 .dl-app-row.skipped { opacity: 0.4; }
 
-/* ── FIXED DOWNLOAD ICON ── */
 .dl-app-icon {
   width: 40px; height: 40px; border-radius: 10px;
   flex-shrink: 0; background: var(--bg);
@@ -930,68 +928,156 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfXGZ9lDxfaJ0Ev2CO654
 
 // ─── APP DATA ─────────────────────────────────────────────────────────────
 const APPS = [
-  { id:'chrome',      name:'Chrome',         icon:'/browsers/chrome.png',       brew:'google-chrome',      url:'', category:'Web Browsers',     desc:'Fast browser by Google' },
-  { id:'firefox',     name:'Firefox',        icon:'/browsers/firefox.png',      brew:'firefox',            url:'', category:'Web Browsers',     desc:'Open source by Mozilla' },
-  { id:'brave',       name:'Brave',          icon:'/browsers/brave.png',        brew:'brave-browser',      url:'', category:'Web Browsers',     desc:'Privacy-first browser' },
-  { id:'edge',        name:'Edge',           icon:'/browsers/edge.png',         brew:'microsoft-edge',     url:'', category:'Web Browsers',     desc:"Microsoft's browser" },
-  { id:'opera',       name:'Opera',          icon:'/browsers/opera.png',        brew:'opera',              url:'', category:'Web Browsers',     desc:'Built-in VPN & more' },
-  { id:'chatgpt-atlas', name:'ChatGPT Atlas', icon:'/browsers/chatgpt-atlas.png', brew:'chatgpt-atlas',    url:'', category:'Web Browsers',     desc:"OpenAI's official browser with ChatGPT built-in" },
 
-  { id:'discord',     name:'Discord',        icon:'/communication/discord.png', brew:'discord',            url:'', category:'Communication',    desc:'Voice, video & text chat' },
-  { id:'slack',       name:'Slack',          icon:'/communication/slack.png',   brew:'slack',              url:'', category:'Communication',    desc:'Team messaging platform' },
-  { id:'zoom',        name:'Zoom',           icon:'/communication/zoom.png',    brew:'zoom',               url:'', category:'Communication',    desc:'Video conferencing' },
-  { id:'teams',       name:'Teams',          icon:'/communication/teams.png',   brew:'microsoft-teams',    url:'', category:'Communication',    desc:"Microsoft's work hub" },
-  { id:'telegram',    name:'Telegram',       icon:'/communication/telegram.png',brew:'telegram',           url:'', category:'Communication',    desc:'Fast & secure messaging' },
-  { id:'whatsapp',    name:'WhatsApp',       icon:'/communication/whatsapp.png',brew:'whatsapp',           url:'', category:'Communication',    desc:'Cross-platform messaging' },
+  // ── Web Browsers ─────────────────────────────────────────────────────
+  { id:'chrome',        name:'Chrome',              icon:'/browsers/chrome.png',          brew:'google-chrome',              url:'', category:'Web Browsers', desc:'Fast browser by Google' },
+  { id:'chromecanary',  name:'Chrome Canary',       icon:'/browsers/chromecanary.png',    brew:'google-chrome@canary',       url:'', category:'Web Browsers', desc:'Google Chrome Canary' },
+  { id:'firefox',       name:'Firefox',             icon:'/browsers/firefox.png',         brew:'firefox',                    url:'', category:'Web Browsers', desc:'Open source by Mozilla' },
+  { id:'firefox-dev',   name:'Firefox Dev.',        icon:'/browsers/firefoxdev.png',      brew:'firefox@developer-edition',  url:'', category:'Web Browsers', desc:'Mozilla Firefox Developer Edition' },
+  { id:'brave',         name:'Brave',               icon:'/browsers/brave.png',           brew:'brave-browser',              url:'', category:'Web Browsers', desc:'Privacy-first browser' },
+  { id:'vivaldi',       name:'Vivaldi',             icon:'/browsers/vivaldi.png',         brew:'vivaldi',                    url:'', category:'Web Browsers', desc:'Highly customizable browser' },
+  { id:'tor',           name:'Tor Browser',         icon:'/browsers/tor.png',             brew:'tor-browser',                url:'', category:'Web Browsers', desc:'Anonymized private browsing' },
+  { id:'yandex',        name:'Yandex',              icon:'/browsers/yandex.png',          brew:'yandex',                     url:'', category:'Web Browsers', desc:'Yandex Browser' },
+  { id:'edge',          name:'Edge',                icon:'/browsers/edge.png',            brew:'microsoft-edge',             url:'', category:'Web Browsers', desc:"Microsoft's browser" },
+  { id:'opera',         name:'Opera',               icon:'/browsers/opera.png',           brew:'opera',                      url:'', category:'Web Browsers', desc:'Built-in VPN & more' },
+  { id:'operagx',       name:'Opera GX',            icon:'/browsers/operagx.png',         brew:'opera-gx',                   url:'', category:'Web Browsers', desc:'Gaming browser by Opera' },
+  { id:'arc',           name:'Arc',                 icon:'/browsers/arc.png',             brew:'arc',                        url:'', category:'Web Browsers', desc:'The browser that puts you in control' },
+  { id:'zen',           name:'Zen',                 icon:'/browsers/zen.png',             brew:'zen',                        url:'', category:'Web Browsers', desc:'Gecko based web browser' },
+  { id:'waterfox',      name:'Waterfox',            icon:'/browsers/waterfox.png',        brew:'waterfox',                   url:'', category:'Web Browsers', desc:'Firefox-based privacy browser' },
+  { id:'floorp',        name:'Floorp',              icon:'/browsers/floorp.png',          brew:'floorp',                     url:'', category:'Web Browsers', desc:'Firefox-based, highly customizable browser' },
+  { id:'chatgpt-atlas', name:'ChatGPT Atlas',       icon:'/browsers/chatgpt-atlas.png',   brew:'chatgpt-atlas',              url:'', category:'Web Browsers', desc:"OpenAI's browser with ChatGPT built-in" },
 
-  { id:'vscode',      name:'VS Code',        icon:'/developer/vscode.png',      brew:'visual-studio-code', url:'', category:'Developer Tools',  desc:'Code editor by Microsoft' },
-  { id:'iterm2',      name:'iTerm2',         icon:'/developer/iterm2.png',      brew:'iterm2',             url:'', category:'Developer Tools',  desc:'Better macOS terminal' },
-  { id:'github',      name:'GitHub Desktop', icon:'/developer/github.png',      brew:'github',             url:'', category:'Developer Tools',  desc:'GitHub GUI client' },
-  { id:'postman',     name:'Postman',        icon:'/developer/postman.png',     brew:'postman',            url:'', category:'Developer Tools',  desc:'API development & testing' },
-  { id:'sublime',     name:'Sublime Text',   icon:'/developer/sublime.png',     brew:'sublime-text',       url:'', category:'Developer Tools',  desc:'Sophisticated text editor' },
+  // ── Communication ─────────────────────────────────────────────────────
+  { id:'discord',       name:'Discord',             icon:'/communication/discord.png',    brew:'discord',                    url:'', category:'Communication', desc:'Voice, video & text chat' },
+  { id:'slack',         name:'Slack',               icon:'/communication/slack.png',      brew:'slack',                      url:'', category:'Communication', desc:'Team messaging platform' },
+  { id:'zoom',          name:'Zoom',                icon:'/communication/zoom.png',       brew:'zoom',                       url:'', category:'Communication', desc:'Video conferencing' },
+  { id:'teams',         name:'Teams',               icon:'/communication/teams.png',      brew:'microsoft-teams',            url:'', category:'Communication', desc:"Microsoft's work hub" },
+  { id:'telegram',      name:'Telegram',            icon:'/communication/telegram.png',   brew:'telegram',                   url:'', category:'Communication', desc:'Fast & secure messaging' },
+  { id:'whatsapp',      name:'WhatsApp',            icon:'/communication/whatsapp.png',   brew:'whatsapp',                   url:'', category:'Communication', desc:'Cross-platform messaging' },
+  { id:'signal',        name:'Signal',              icon:'/communication/signal.png',     brew:'signal',                     url:'', category:'Communication', desc:'Private encrypted messaging' },
+  { id:'viber',         name:'Viber',               icon:'/communication/viber.png',      brew:'viber',                      url:'', category:'Communication', desc:'Free calls and messages' },
+  { id:'mattermost',    name:'Mattermost',          icon:'/communication/mattermost.png', brew:'mattermost',                 url:'', category:'Communication', desc:'Open source team messaging' },
+  { id:'element',       name:'Element',             icon:'/communication/element.png',    brew:'element',                    url:'', category:'Communication', desc:'Secure, decentralized messaging' },
 
-  { id:'vlc',         name:'VLC',            icon:'/media/vlc.png',             brew:'vlc',                url:'', category:'Media',            desc:'Universal media player' },
-  { id:'spotify',     name:'Spotify',        icon:'/media/spotify.png',         brew:'spotify',            url:'', category:'Media',            desc:'Music & podcast streaming' },
-  { id:'iina',        name:'IINA',           icon:'/media/iina.png',            brew:'iina',               url:'', category:'Media',            desc:'Modern video player for Mac' },
-  { id:'handbrake',   name:'HandBrake',      icon:'/media/handbrake.png',       brew:'handbrake',          url:'https://github.com/HandBrake/HandBrake/releases/latest', category:'Media', desc:'Open source video transcoder' },
-  { id:'audacity',    name:'Audacity',       icon:'/media/audacity.png',        brew:'audacity',           url:'', category:'Media',            desc:'Audio editor & recorder' },
+  // ── Developer Tools ───────────────────────────────────────────────────
+  { id:'vscode',        name:'VS Code',             icon:'/developer/vscode.png',         brew:'visual-studio-code',         url:'', category:'Developer Tools', desc:'Code editor by Microsoft' },
+  { id:'cursor',        name:'Cursor',              icon:'/developer/cursor.png',         brew:'cursor',                     url:'', category:'Developer Tools', desc:'AI-first code editor' },
+  { id:'zed',           name:'Zed',                 icon:'/developer/zed.png',            brew:'zed',                        url:'', category:'Developer Tools', desc:'High-performance collaborative editor' },
+  { id:'nova',          name:'Nova',                icon:'/developer/nova.png',           brew:'nova',                       url:'', category:'Developer Tools', desc:'Beautiful native Mac code editor' },
+  { id:'sublime',       name:'Sublime Text',        icon:'/developer/sublime.png',        brew:'sublime-text',               url:'', category:'Developer Tools', desc:'Sophisticated text editor' },
+  { id:'iterm2',        name:'iTerm2',              icon:'/developer/iterm2.png',         brew:'iterm2',                     url:'', category:'Developer Tools', desc:'Better macOS terminal' },
+  { id:'warp',          name:'Warp',                icon:'/developer/warp.png',           brew:'warp',                       url:'', category:'Developer Tools', desc:'AI-powered modern terminal' },
+  { id:'github',        name:'GitHub Desktop',      icon:'/developer/github.png',         brew:'github',                     url:'', category:'Developer Tools', desc:'GitHub GUI client' },
+  { id:'sourcetree',    name:'SourceTree',          icon:'/developer/sourcetree.png',     brew:'sourcetree',                 url:'', category:'Developer Tools', desc:'Free Git & Mercurial GUI' },
+  { id:'fork',          name:'Fork',                icon:'/developer/fork.png',           brew:'fork',                       url:'', category:'Developer Tools', desc:'Fast, friendly Git client' },
+  { id:'postman',       name:'Postman',             icon:'/developer/postman.png',        brew:'postman',                    url:'', category:'Developer Tools', desc:'API development & testing' },
+  { id:'insomnia',      name:'Insomnia',            icon:'/developer/insomnia.png',       brew:'insomnia',                   url:'', category:'Developer Tools', desc:'API design & testing platform' },
+  { id:'docker',        name:'Docker',              icon:'/developer/docker.png',         brew:'docker',                     url:'', category:'Developer Tools', desc:'App containerization platform' },
+  { id:'tableplus',     name:'TablePlus',           icon:'/developer/tableplus.png',      brew:'tableplus',                  url:'', category:'Developer Tools', desc:'Modern database GUI' },
+  { id:'sequel-pro',    name:'Sequel Pro',          icon:'/developer/sequelpro.png',     brew:'sequel-pro',                 url:'', category:'Developer Tools', desc:'MySQL & MariaDB database manager' },
+  { id:'sequel-ace',    name:'Sequel Ace',          icon:'/developer/sequelace.png',     brew:'sequel-ace',                 url:'', category:'Developer Tools', desc:'MySQL & MariaDB GUI (Sequel Pro fork)' },
+  { id:'cyberduck',     name:'Cyberduck',           icon:'/developer/cyberduck.png',      brew:'cyberduck',                  url:'', category:'Developer Tools', desc:'FTP, SFTP & cloud storage browser' },
+  { id:'filezilla',     name:'FileZilla',           icon:'/developer/filezilla.png',      brew:'filezilla',                  url:'', category:'Developer Tools', desc:'Free cross-platform FTP client' },
+  { id:'dash',          name:'Dash',                icon:'/developer/dash.png',           brew:'dash',                       url:'', category:'Developer Tools', desc:'API documentation browser' },
+  { id:'proxyman',      name:'Proxyman',            icon:'/developer/proxyman.png',       brew:'proxyman',                   url:'', category:'Developer Tools', desc:'Native macOS HTTP debugging proxy' },
+  { id:'transmit',      name:'Transmit',            icon:'/developer/transmit.png',       brew:'transmit',                   url:'', category:'Developer Tools', desc:'File transfer for Mac' },
 
-  { id:'notion',      name:'Notion',         icon:'/productivity/notion.png',   brew:'notion',             url:'', category:'Productivity',     desc:'All-in-one workspace' },
-  { id:'obsidian',    name:'Obsidian',       icon:'/productivity/obsidian.png', brew:'obsidian',           url:'', category:'Productivity',     desc:'Knowledge base & notes' },
-  { id:'1password',   name:'1Password',      icon:'/productivity/1password.png',brew:'1password',          url:'', category:'Productivity',     desc:'Password manager' },
-  { id:'raycast',     name:'Raycast',        icon:'/productivity/raycast.png',  brew:'raycast',            url:'', category:'Productivity',     desc:'Supercharged launcher' },
-  { id:'alfred',      name:'Alfred',         icon:'/productivity/alfred.png',   brew:'alfred',             url:'', category:'Productivity',     desc:'Productivity app launcher' },
+  // ── Media ─────────────────────────────────────────────────────────────
+  { id:'vlc',           name:'VLC',                 icon:'/media/vlc.png',                brew:'vlc',                        url:'', category:'Media', desc:'Universal media player' },
+  { id:'iina',          name:'IINA',                icon:'/media/iina.png',               brew:'iina',                       url:'', category:'Media', desc:'Modern video player for Mac' },
+  { id:'spotify',       name:'Spotify',             icon:'/media/spotify.png',            brew:'spotify',                    url:'', category:'Media', desc:'Music & podcast streaming' },
+  { id:'plex',          name:'Plex',                icon:'/media/plex.png',               brew:'plex',                       url:'', category:'Media', desc:'Stream and organize your media' },
+  { id:'handbrake',     name:'HandBrake',           icon:'/media/handbrake.png',          brew:'handbrake',                  url:'https://github.com/HandBrake/HandBrake/releases/latest', category:'Media', desc:'Open source video transcoder' },
+  { id:'audacity',      name:'Audacity',            icon:'/media/audacity.png',           brew:'audacity',                   url:'', category:'Media', desc:'Audio editor & recorder' },
+  { id:'4k-dl',         name:'4K Video Downloader', icon:'/media/4kvideodownloader.png',brew:'4k-video-downloader',        url:'', category:'Media', desc:'Download video from YouTube and more' },
+  { id:'clementine',    name:'Clementine',          icon:'/media/clementine.png',         brew:'clementine',                 url:'', category:'Media', desc:'Modern music player and organizer' },
+  { id:'vox',           name:'VOX Music Player',    icon:'/media/vox.png',                brew:'vox',                        url:'', category:'Media', desc:'Lightweight Hi-Res music player' },
 
-  { id:'rectangle',   name:'Rectangle',      icon:'/utilities/rectangle.png',   brew:'rectangle',          url:'', category:'Utilities',        desc:'Window snapping & tiling' },
-  { id:'appcleaner',  name:'AppCleaner',     icon:'/utilities/appcleaner.png',  brew:'appcleaner',         url:'', category:'Utilities',        desc:'Thorough app uninstaller' },
-  { id:'anydesk',     name:'AnyDesk',        icon:'/utilities/anydesk.png',     brew:'anydesk',            url:'', category:'Utilities',        desc:'Remote desktop access' },
-  { id:'unarchiver',  name:'The Unarchiver', icon:'/utilities/unarchiver.png',  brew:'the-unarchiver',     url:'', category:'Utilities',        desc:'Extract any archive format' },
-  { id:'stats',       name:'Stats',          icon:'/utilities/stats.png',       brew:'stats',              url:'', category:'Utilities',        desc:'macOS system monitor' },
-  { id:'malwarebytes',name:'Malwarebytes',   icon:'/security/malwarebytes.png', brew:'malwarebytes',       url:'', category:'Security',         desc:'Anti-malware scanner' },
-  { id:'bitwarden',   name:'Bitwarden',      icon:'/security/bitwarden.png',    brew:'bitwarden',          url:'', category:'Security',         desc:'Open source password vault' },
+  // ── Productivity ──────────────────────────────────────────────────────
+  { id:'notion',        name:'Notion',              icon:'/productivity/notion.png',      brew:'notion',                     url:'', category:'Productivity', desc:'All-in-one workspace' },
+  { id:'obsidian',      name:'Obsidian',            icon:'/productivity/obsidian.png',    brew:'obsidian',                   url:'', category:'Productivity', desc:'Knowledge base & notes' },
+  { id:'evernote',      name:'Evernote',            icon:'/productivity/evernote.png',    brew:'evernote',                   url:'', category:'Productivity', desc:'Note-taking and organization' },
+  { id:'todoist',       name:'Todoist',             icon:'/productivity/todoist.png',     brew:'todoist',                    url:'', category:'Productivity', desc:'Task manager and to-do list' },
+  { id:'ticktick',      name:'TickTick',            icon:'/productivity/ticktick.png',    brew:'ticktick',                   url:'', category:'Productivity', desc:'To-do list & task manager' },
+  { id:'libreoffice',   name:'LibreOffice',         icon:'/productivity/libreoffice.png', brew:'libreoffice',                url:'', category:'Productivity', desc:'Free and open source office suite' },
+  { id:'msoffice',      name:'Microsoft Office',    icon:'/productivity/microsoftoffice.png', brew:'microsoft-office',     url:'', category:'Productivity', desc:'Word, Excel, PowerPoint & more' },
+  { id:'onlyoffice',    name:'ONLYOFFICE',          icon:'/productivity/onlyoffice.png',  brew:'onlyoffice',                 url:'', category:'Productivity', desc:'Open source office suite' },
+  { id:'1password',     name:'1Password',           icon:'/productivity/1password.png',   brew:'1password',                  url:'', category:'Productivity', desc:'Password manager' },
+  { id:'raycast',       name:'Raycast',             icon:'/productivity/raycast.png',     brew:'raycast',                    url:'', category:'Productivity', desc:'Supercharged launcher - spotlight alternative' },
+  { id:'alfred',        name:'Alfred',              icon:'/productivity/alfred.png',      brew:'alfred',                     url:'', category:'Productivity', desc:'Productivity app launcher' },
 
-  { id:'gimp',        name:'GIMP',           icon:'/design/gimp.png',           brew:'gimp',               url:'', category:'Imaging & Design', desc:'Free image editor' },
-  { id:'inkscape',    name:'Inkscape',       icon:'/design/inkscape.png',       brew:'inkscape',           url:'', category:'Imaging & Design', desc:'Vector graphics editor' },
-  { id:'blender',     name:'Blender',        icon:'/design/blender.png',        brew:'blender',            url:'', category:'Imaging & Design', desc:'3D creation suite' },
-  { id:'krita',       name:'Krita',          icon:'/design/krita.png',          brew:'krita',              url:'', category:'Imaging & Design', desc:'Professional digital painting' },
-  { id:'affinity',    name:'Affinity',       icon:'/design/affinity.png',       brew:'affinity',           url:'', category:'Imaging & Design', desc:'Image editing and design' },
+  // ── Utilities ─────────────────────────────────────────────────────────
+  { id:'rectangle',     name:'Rectangle',           icon:'/utilities/rectangle.png',      brew:'rectangle',                  url:'', category:'Utilities', desc:'Window snapping & tiling' },
+  { id:'appcleaner',    name:'AppCleaner',          icon:'/utilities/appcleaner.png',     brew:'appcleaner',                 url:'', category:'Utilities', desc:'Thorough app uninstaller' },
+  { id:'bartender',     name:'Bartender',           icon:'/utilities/bartender.png',      brew:'bartender',                  url:'', category:'Utilities', desc:'Organize your menu bar apps' },
+  { id:'bettertouchtool',name:'BetterTouchTool',    icon:'/utilities/bettertouchtool.png',brew:'bettertouchtool',            url:'', category:'Utilities', desc:'Powerful input customization tool' },
+  { id:'popclip',       name:'PopClip',             icon:'/utilities/popclip.png',        brew:'popclip',                    url:'', category:'Utilities', desc:'Instant text actions on selection' },
+  { id:'anydesk',       name:'AnyDesk',             icon:'/utilities/anydesk.png',        brew:'anydesk',                    url:'', category:'Utilities', desc:'Remote desktop access' },
+  { id:'unarchiver',    name:'The Unarchiver',      icon:'/utilities/unarchiver.png',     brew:'the-unarchiver',             url:'', category:'Utilities', desc:'Extract any archive format' },
+  { id:'keka',          name:'Keka',                icon:'/utilities/keka.png',           brew:'keka',                       url:'', category:'Utilities', desc:'macOS file archiver' },
+  { id:'stats',         name:'Stats',               icon:'/utilities/stats.png',          brew:'stats',                      url:'', category:'Utilities', desc:'macOS system monitor in menu bar' },
+  { id:'monitorcontrol',name:'MonitorControl',      icon:'/utilities/monitorcontrol.png', brew:'monitorcontrol',             url:'', category:'Utilities', desc:'Control external display brightness' },
+  { id:'cleanmymac',    name:'CleanMyMac',          icon:'/utilities/cleanmymac.png',     brew:'cleanmymac',                 url:'', category:'Utilities', desc:'Mac cleaner & performance optimizer' },
+  { id:'transmission',  name:'Transmission',        icon:'/utilities/transmission.png',   brew:'transmission',               url:'', category:'Utilities', desc:'Lightweight BitTorrent client' },
+  { id:'qbittorrent',   name:'qBittorrent',         icon:'/utilities/qbittorrent.png',    brew:'qbittorrent',                url:'', category:'Utilities', desc:'Free & open source BitTorrent client' },
+  { id:'caffeine',      name:'Theine',              icon:'/utilities/theine.png',         brew:'theine',                     url:'', category:'Utilities', desc:'Keep your Mac awake' },
+  { id:'istatmenus',    name:'iStat Menus',         icon:'/utilities/istatmenus.png',     brew:'istat-menus',                url:'', category:'Utilities', desc:'Advanced system monitor for menu bar' },
+  { id:'maccy',         name:'Maccy',               icon:'/utilities/maccy.png',          brew:'maccy',                      url:'', category:'Utilities', desc:'Lightweight clipboard manager' },
 
-  { id:'dropbox',     name:'Dropbox',        icon:'/storage/dropbox.png',       brew:'dropbox',            url:'', category:'Online Storage',   desc:'Cloud file storage & sync' },
-  { id:'googledrive', name:'Google Drive',   icon:'/storage/googledrive.png',   brew:'google-drive',       url:'', category:'Online Storage',   desc:"Google's cloud storage" },
+  // ── Online Storage ────────────────────────────────────────────────────
+  { id:'dropbox',       name:'Dropbox',             icon:'/storage/dropbox.png',          brew:'dropbox',                    url:'', category:'Online Storage', desc:'Cloud file storage & sync' },
+  { id:'googledrive',   name:'Google Drive',        icon:'/storage/googledrive.png',      brew:'google-drive',               url:'', category:'Online Storage', desc:"Google's cloud storage" },
+  { id:'onedrive',      name:'OneDrive',            icon:'/storage/onedrive.png',         brew:'onedrive',                   url:'', category:'Online Storage', desc:"Microsoft's cloud storage" },
+  { id:'box-drive',     name:'Box Drive',           icon:'/storage/boxdrive.png',              brew:'box-drive',                  url:'', category:'Online Storage', desc:'Cloud content management' },
+  { id:'megasync',      name:'MEGA',                icon:'/storage/mega.png',             brew:'megasync',                   url:'', category:'Online Storage', desc:'Encrypted cloud storage & sync' },
 
-  { id:'keka',        name:'Keka',           icon:'/compression/keka.png',      brew:'keka',               url:'', category:'Compression',      desc:'macOS file archiver' },
+  // ── Security ──────────────────────────────────────────────────────────
+  { id:'malwarebytes',  name:'Malwarebytes',        icon:'/security/malwarebytes.png',    brew:'malwarebytes',               url:'', category:'Security', desc:'Anti-malware scanner' },
+  { id:'bitwarden',     name:'Bitwarden',           icon:'/security/bitwarden.png',       brew:'bitwarden',                  url:'', category:'Security', desc:'Open source password vault' },
+  { id:'nordvpn',       name:'NordVPN',             icon:'/security/nordvpn.png',         brew:'nordvpn',                    url:'', category:'Security', desc:'Fast and private VPN' },
+  { id:'protonvpn',     name:'ProtonVPN',           icon:'/security/protonvpn.png',       brew:'protonvpn',                  url:'', category:'Security', desc:'Secure and private VPN' },
+  { id:'little-snitch', name:'Little Snitch',       icon:'/security/littlesnitch.png',   brew:'little-snitch',              url:'', category:'Security', desc:'Network monitor & firewall' },
+  { id:'avast-security',name:'Avast Security',      icon:'/security/avast.png',           brew:'avast-security',             url:'', category:'Security', desc:'Free antivirus for Mac' },
+  { id:'avira',         name:'Avira',               icon:'/security/avira.png',           brew:'avira',                      url:'', category:'Security', desc:'Antivirus & security suite' },
+  { id:'lulu',          name:'LuLu',                icon:'/security/lulu.png',            brew:'lulu',                       url:'', category:'Security', desc:'Free, open source macOS firewall' },
 
-  { id:'minecraft',   name:'Minecraft Launcher', icon:'/games/minecraft.png',   brew:'minecraft',          url:'', category:'Games',            desc:'Sandbox construction video game' },
-  { id:'roblox',      name:'Roblox',             icon:'/games/roblox.png',      brew:'roblox',             url:'', category:'Games',            desc:'Online multiplayer game platform' },
-  { id:'steam',       name:'Steam',              icon:'/games/steam.png',       brew:'steam',              url:'', category:'Games',            desc:'Video game digital distribution service' },
-  { id:'epicgames',   name:'Epic Games Store',   icon:'/games/epicgames.png',   brew:'epic-games',         url:'', category:'Games',            desc:'Launcher for "Epic Games" games' },
+  // ── Imaging & Design ──────────────────────────────────────────────────
+  { id:'gimp',          name:'GIMP',                icon:'/design/gimp.png',              brew:'gimp',                       url:'', category:'Imaging & Design', desc:'Free image editor' },
+  { id:'inkscape',      name:'Inkscape',            icon:'/design/inkscape.png',          brew:'inkscape',                   url:'', category:'Imaging & Design', desc:'Vector graphics editor' },
+  { id:'blender',       name:'Blender',             icon:'/design/blender.png',           brew:'blender',                    url:'', category:'Imaging & Design', desc:'3D creation suite' },
+  { id:'krita',         name:'Krita',               icon:'/design/krita.png',             brew:'krita',                      url:'', category:'Imaging & Design', desc:'Professional digital painting' },
+  { id:'figma',         name:'Figma',               icon:'/design/figma.png',             brew:'figma',                      url:'', category:'Imaging & Design', desc:'Collaborative design & prototyping' },
+  { id:'sketch',        name:'Sketch',              icon:'/design/sketch.png',            brew:'sketch',                     url:'', category:'Imaging & Design', desc:'Digital design platform for Mac' },
+  { id:'affinity',      name:'Affinity',            icon:'/design/affinity.png',          brew:'affinity-designer',          url:'', category:'Imaging & Design', desc:'Professional image editing & design' },
+  { id:'imageoptim',    name:'ImageOptim',          icon:'/design/imageoptim.png',        brew:'imageoptim',                 url:'', category:'Imaging & Design', desc:'Lossless image compression' },
 
-  { id:'chatgpt',   name:'ChatGPT',   icon:'/ai/chatgpt.png',   brew:'chatgpt',       url:'', category:'Artificial Intelligence', desc:"OpenAI's official ChatGPT desktop app" },
-  { id:'gemini',    name:'Gemini',    icon:'/ai/gemini.png',    brew:'google-gemini', url:'', category:'Artificial Intelligence', desc:"Native desktop AI assistant from Google" },
-  { id:'claude',    name:'Claude',    icon:'/ai/claude.png',    brew:'claude',        url:'', category:'Artificial Intelligence', desc:"Anthropic's official Claude AI desktop app" },
+  // ── Video ─────────────────────────────────────────────────────
+  { id:'capcut',        name:'CapCut',              icon:'/videoediting/capcut.png',       brew:'capcut',                    url:'', category:'Video', desc:'Video and image design platform' },
+  { id:'davinciresolve',name:'DaVinci Resolve',     icon:'/videoediting/davinciresolve.png',brew:'davinci-resolve',          url:'', category:'Video', desc:'Professional editing, color & audio' },
+  { id:'obs',           name:'OBS Studio',          icon:'/videoediting/obsstudio.png',          brew:'obs',                       url:'', category:'Video', desc:'Free live streaming & recording' },
+  { id:'shotcut',       name:'Shotcut',             icon:'/videoediting/shotcut.png',      brew:'shotcut',                   url:'', category:'Video', desc:'Free, open source video editor' },
+  { id:'kdenlive',      name:'Kdenlive',            icon:'/videoediting/kdenlive.png',     brew:'kdenlive',                  url:'', category:'Video', desc:'Free & open source video editor' },
 
-  { id:'capcut',         name:'CapCut',         icon:'/videoediting/capcut.png',         brew:'capcut',  url:'', category:'Video Editing', desc:"Video editing and image design platform" },
-  { id:'davinciresolve', name:'DaVinci Resolve', icon:'/videoediting/davinciresolve.png', brew:'',        url:'', category:'Video Editing', desc:"Professional Editing, Color, Effects and Audio Post" },
+  // ── Artificial Intelligence ───────────────────────────────────────────
+  { id:'chatgpt',       name:'ChatGPT',             icon:'/ai/chatgpt.png',               brew:'chatgpt',                    url:'', category:'Artificial Intelligence', desc:"OpenAI's official ChatGPT desktop app" },
+  { id:'gemini',        name:'Gemini',              icon:'/ai/gemini.png',                brew:'google-gemini',              url:'', category:'Artificial Intelligence', desc:"Native desktop AI assistant from Google" },
+  { id:'claude',        name:'Claude',              icon:'/ai/claude.png',                brew:'claude',                     url:'', category:'Artificial Intelligence', desc:"Anthropic's official Claude AI desktop app" },
+  { id:'ollama',        name:'Ollama',              icon:'/ai/ollama.png',                brew:'ollama',                     url:'', category:'Artificial Intelligence', desc:'Run large language models locally' },
+  { id:'diffusionbee',  name:'DiffusionBee',        icon:'/ai/diffusionbee.png',          brew:'diffusionbee',               url:'', category:'Artificial Intelligence', desc:'Stable Diffusion on your Mac' },
+
+  // ── Virtualization ────────────────────────────────────────────────────
+  { id:'utm',           name:'UTM',                 icon:'/virtualization/utm.png',       brew:'utm',                        url:'', category:'Virtualization', desc:'Virtual machines for Mac' },
+  { id:'virtualbox',    name:'VirtualBox',          icon:'/virtualization/virtualbox.png',brew:'virtualbox',                 url:'', category:'Virtualization', desc:'Free & open source VM software' },
+  { id:'parallels',     name:'Parallels Desktop',   icon:'/virtualization/parallelsdesktop.png', brew:'parallels',                  url:'', category:'Virtualization', desc:'Run Windows and more on Mac' },
+
+  // ── Games ─────────────────────────────────────────────────────────────
+  { id:'minecraft',     name:'Minecraft Launcher',  icon:'/games/minecraft.png',          brew:'minecraft',                  url:'', category:'Games', desc:'Sandbox construction video game' },
+  { id:'roblox',        name:'Roblox',              icon:'/games/roblox.png',             brew:'roblox',                     url:'', category:'Games', desc:'Online multiplayer game platform' },
+  { id:'steam',         name:'Steam',               icon:'/games/steam.png',              brew:'steam',                      url:'', category:'Games', desc:'Video game digital distribution service' },
+  { id:'epicgames',     name:'Epic Games Store',    icon:'/games/epicgames.png',          brew:'epic-games',                 url:'', category:'Games', desc:'Launcher for Epic Games titles' },
+  { id:'openemu',       name:'OpenEmu',             icon:'/games/openemu.png',            brew:'openemu',                    url:'', category:'Games', desc:'Retro video game emulation for Mac' },
+  { id:'whisky',        name:'Whisky',              icon:'/games/whisky.png',             brew:'whisky',                     url:'', category:'Games', desc:'Run Windows games on macOS' },
+
 ];
 
 // ─── ANIMATED STATS ───────────────────────────────────────────────────────
@@ -1011,7 +1097,7 @@ setTimeout(() => {
 
 // ─── STATE ────────────────────────────────────────────────────────────────
 const selected = new Set();
-const CAT_LIMIT = 5; // show this many cards before "See All"
+const CAT_LIMIT = 5;
 let dropdownOpen = false;
 
 // ─── ICON HELPER ─────────────────────────────────────────────────────────
@@ -1093,7 +1179,6 @@ function buildSections(apps) {
     const sec = document.createElement('div');
     sec.className = 'cat-section';
 
-    // ── category header ──
     const lw = document.createElement('div'); lw.className = 'cat-label-wrap';
     const lb = document.createElement('div'); lb.className = 'cat-label'; lb.textContent = cat;
     const line = document.createElement('div'); line.className = 'cat-line';
@@ -1101,7 +1186,6 @@ function buildSections(apps) {
 
     lw.append(lb, line, cnt);
 
-    // "See All" button for categories with > CAT_LIMIT apps
     let btnSeeAll = null;
     if (catApps.length > CAT_LIMIT) {
       btnSeeAll = document.createElement('button');
@@ -1112,7 +1196,6 @@ function buildSections(apps) {
 
     sec.appendChild(lw);
 
-    // ── app grid ──
     const grid = document.createElement('div'); grid.className = 'app-grid';
 
     catApps.forEach((app, idx) => {
@@ -1154,7 +1237,6 @@ function buildSections(apps) {
     el.appendChild(sec);
     sectionObserver.observe(sec);
 
-    // ── See All / See Less toggle ──
     if (btnSeeAll) {
       let expanded = false;
       btnSeeAll.addEventListener('click', () => {
@@ -1166,7 +1248,6 @@ function buildSections(apps) {
           hiddenCards.forEach((card, i) => {
             card.classList.remove('cat-hidden');
             if (!card.app_url_checked) {
-              // dim no-url cards
               if (card.classList.contains('no-url')) {
                 setTimeout(() => { card.style.opacity = '0.42'; }, 400);
               }
@@ -1177,13 +1258,8 @@ function buildSections(apps) {
         } else {
           btnSeeAll.innerHTML = `See all <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
           btnSeeAll.classList.remove('expanded');
-          hiddenCards.forEach(card => {
-            card.classList.add('cat-hidden');
-            card.classList.remove('card-visible');
-          });
-          // also hide the ones that were shown
-          const allHidden = grid.querySelectorAll(`.app-card`);
-          allHidden.forEach((card, i) => {
+          const allCards = grid.querySelectorAll('.app-card');
+          allCards.forEach((card, i) => {
             if (i >= CAT_LIMIT) {
               card.classList.add('cat-hidden');
               card.classList.remove('card-visible');
@@ -1232,7 +1308,6 @@ function buildDropdown() {
     removeBtn.addEventListener('click', e => {
       e.stopPropagation();
       selected.delete(app.id);
-      // deselect the card
       const card = document.querySelector(`.app-card[data-id="${app.id}"]`);
       if (card) card.classList.remove('selected');
       updateBar();
@@ -1275,7 +1350,7 @@ function updateBar() {
     document.getElementById('sel-names').textContent = apps.length + ' apps selected';
     chevron.style.display = '';
     trigger.style.cursor = 'pointer';
-    if (dropdownOpen) buildDropdown(); // refresh dropdown if open
+    if (dropdownOpen) buildDropdown();
   } else {
     document.getElementById('sel-names').textContent = apps.map(a => a.name).join(' · ');
     chevron.style.display = 'none';
@@ -1343,12 +1418,10 @@ document.getElementById('btn-clear').addEventListener('click', () => {
   updateBar();
 });
 
-// ─── SEL TRIGGER (dropdown toggle) ────────────────────────────────────────
 document.getElementById('sel-trigger').addEventListener('click', () => {
   if (selected.size > 3) toggleDropdown();
 });
 
-// close dropdown when clicking outside
 document.addEventListener('click', e => {
   if (!dropdownOpen) return;
   const bar = document.getElementById('sticky-bar');
@@ -1377,7 +1450,6 @@ function setUpdateStatus(state, label) {
 
 function applyBrewData(cask, data) {
   const app = APPS.find(a => a.brew === cask); if (!app) return;
-  // Only overwrite url if it's empty (don't replace manual fallbacks)
   if (data.url && !app.url) app.url = data.url;
   if (data.version) app.version = data.version;
   const badge = document.getElementById('vbadge-' + app.id);
@@ -1454,7 +1526,6 @@ async function runBrewSync() {
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────
-// Hide chevron initially
 document.getElementById('sel-chevron').style.display = 'none';
 buildSections(APPS);
 runBrewSync();
